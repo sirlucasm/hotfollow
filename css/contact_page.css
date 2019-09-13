@@ -1,0 +1,159 @@
+/*  GENERAL SETTINGS  */
+
+html, body{
+    margin:0;
+    padding:0;
+    font-family: 'Red Hat Text', sans-serif;
+    color:black;
+    overflow-x: hidden;
+}
+
+/*  EDIT BACKGROUND PART  */
+
+.edit-footer-part{
+    background:#0c1f2e; 
+    background-position:bottom;
+    background-size:cover;
+}
+
+.bg-copyright{
+    background:#0a151d;
+    background-size:200% 20px;
+    background-position:cover;
+}
+
+.bg-nav{
+    background:#0c1f2e; 
+    background-position:bottom;
+    background-size:cover;
+}
+
+/*  EDIT TEXT and IMG MAIN PART  */
+
+.edit-send-us-title div h2{
+    color:#494949;
+    font-size:38px;
+}
+
+.edit-text-assuntos ul{
+    list-style:square;
+}
+.edit-text-assuntos ul h4{
+    font-size:19px;    
+}
+.edit-text-assuntos ul li{
+    color:#494949;
+}
+.edit-text-assuntos ul li:hover{
+    text-decoration:underline;
+    color:#f98100;
+    transition:.1s;
+}
+
+.edit-mother-form-part{
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:70px;
+    background:#f9f9f9;
+}
+
+.edit-container-form div div input[name="enviar"]{
+    width:100%;
+}
+.edit-container-form div div textarea[name="mensagem"]{
+    height:120px;
+}
+#charLeft{
+    color:#494949;
+    font-size:13px;
+}
+
+
+.edit-but-pos button{
+    border:solid 1px #f98100;
+    color:#f98100;
+}
+.edit-but-pos button:hover{
+    background:#f98100;
+}
+
+.edit-but-pos button:active{
+    box-shadow:0 0 0 0.2rem rgba(248, 133, 1, 0.63);
+}
+.edit-nav{
+    height:80px;
+    position:fixed;
+    top:0;
+    z-index:99;
+    width:100%;
+}
+
+.edit-share-btn{
+    padding-top:30px;
+    padding-bottom:20px;
+    padding-left:40px;
+}
+
+.edit-footer-part ul{
+    list-style:none;
+    margin-right:100px;
+}
+.edit-footer-part ul li h3{
+    text-align:center;
+    color:#e6e4e4;
+    font-size:22px;
+    padding-bottom:10px;
+    text-transform:uppercase;
+}
+.edit-footer-part ul li a, .edit-footer-part ul li p{
+    font-size:14px;
+    text-align:center;
+    color:#ececec;
+    cursor: pointer;
+    padding-top:5px;
+}
+.edit-footer-part ul li a:hover, .edit-footer-part ul li p:hover{
+    color:#cecece;
+    transition-duration:.3s;
+    text-decoration:none;
+}
+
+.bg-copyright div{
+    font-size:12px;
+}
+.bg-copyright div p{
+    color:#fff;
+}
+.bg-copyright div p a{
+    color:#c9c9c9;
+}
+.bg-copyright div p a:hover{
+    transition-duration:.3s;
+    text-decoration:none;
+    color:#f98100;
+}
+
+
+/*  EDIT POSITIONS  */
+
+.edit-send-us-title{
+    margin-top:120px;
+}
+.edit-text-assuntos{
+    margin-top:50px;
+    margin-bottom:40px;
+}
+
+.edit-footer-part{
+    margin-top:20px;
+}
+.edit-footer-part ul{
+    position: relative;
+    left:62px;
+    margin-top:50px;
+}
+
+.edit-nav div a img{
+    margin-top:-5px;
+}

@@ -1,0 +1,240 @@
+/*  GENERAL SETTINGS  */
+
+html, body{
+    margin:0;
+    padding:0;
+    font-family: 'Red Hat Text', sans-serif;
+    color:black;
+    overflow-x: hidden;
+}
+
+
+/*  EDIT BACKGROUND PART  */
+
+.container-fluid{
+    background: url('../img/bg_detail.png') 50% 50% no-repeat; 
+    background-position:top;
+    background-size:200% 692px;
+}
+.pos-card-gif{
+    margin-top:100px;
+    background:url('../img/bg_fast_text.jpg') no-repeat;
+    background-size:cover;
+}
+.edit-footer-part{
+    background:#0c1f2e; 
+    background-position:bottom;
+    background-size:cover;
+}
+
+.bg-copyright{
+    background:#0a151d;
+    background-size:200% 20px;
+    background-position:cover;
+}
+
+/*  EDIT BUTTONS  */
+
+.edit-but-pos button{
+    border:solid 1px #f98100;
+    color:#f98100;
+}
+.edit-but-pos button:hover{
+    background:#f98100;
+}
+
+.edit-but-pos button:active{
+    box-shadow:0 0 0 0.2rem rgba(248, 133, 1, 0.63);
+}
+
+.edit-btn button{
+    background:#f98100;
+    border:#f98100;
+    color:white;
+    width:100%;
+    height:100%;
+    font-size:20px;
+}
+.edit-btn button:hover{
+    background:#ca5e25;
+    color:white;
+}
+.edit-btn button:focus,.edit-btn button:active{
+    box-shadow:0 0 0 0.2rem rgba(248, 133, 1, 0.63);
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+    background:#ca5e25;
+}
+
+
+/*  EDIT TEXT FRONT PART  */
+.edit-front-text h2{
+    color:white;
+    font-size:48px;
+    letter-spacing:4px;
+    word-spacing:5px;
+    opacity:.9;
+    font-weight:900;
+}
+
+
+/*  EDIT TEXT and IMG MAIN PART  */
+.border-on-text{
+    border-bottom:3px solid #6d6d6d;
+    width:100%;
+}
+.border-on-text b{
+    visibility:hidden;
+}
+
+.pos-text-part h2{
+    border-bottom:1px solid #ececec;
+    user-select:none;
+    color:#494949;
+    font-weight:600;
+}
+.pos-text-part p{
+    padding-top:10px;
+    user-select:none;
+    color:#666666;
+    font-size:18px;
+}
+
+.pos-text-card-part{
+    padding-top:40px;
+}
+.pos-text-card-part h3{
+    font-size:38px;
+    color:#494949;
+}
+.pos-text-card-part p{
+    padding-top:10px;
+    font-size:20px;
+    color:#666666;
+}
+
+.edit-howdo-text{
+    padding-top:20px;
+}
+.edit-howdo-text div{
+    height:400px;
+    padding:80px 30px;
+    color:#fff;
+}
+.edit-howdo-text img{
+    width:60px;
+    padding-bottom:50px;
+    pointer-events:none;
+    user-select:none;
+}
+.edit-howdo-text div p a{
+    color:#fff;
+    font-weight:600;
+}
+.edit-howdo-text div p a:hover{
+    color:#c9c9c9;
+    text-decoration:none;
+    transition-duration:.3s;
+}
+
+.edit-img-up img{
+    width:40px;
+    padding:10px;
+    cursor:pointer;
+    border:2px solid #000;
+    border-radius:50%;
+}
+
+.edit-share-btn{
+    padding-top:30px;
+    padding-bottom:20px;
+    padding-left:40px;
+}
+
+.edit-footer-part ul{
+    list-style:none;
+    margin-right:100px;
+}
+.edit-footer-part ul li h3{
+    text-align:center;
+    color:#e6e4e4;
+    font-size:22px;
+    padding-bottom:10px;
+    text-transform:uppercase;
+}
+.edit-footer-part ul li a, .edit-footer-part ul li p{
+    font-size:14px;
+    text-align:center;
+    color:#ececec;
+    cursor: pointer;
+    padding-top:5px;
+}
+.edit-footer-part ul li a:hover, .edit-footer-part ul li p:hover{
+    color:#cecece;
+    transition-duration:.3s;
+    text-decoration:none;
+}
+
+.bg-copyright div{
+    font-size:12px;
+}
+.bg-copyright div p{
+    color:#fff;
+}
+.bg-copyright div p a{
+    color:#c9c9c9;
+}
+.bg-copyright div p a:hover{
+    transition-duration:.3s;
+    text-decoration:none;
+    color:#f98100;
+}
+
+/*  EDIT POSITIONS  */
+.pos-main-img{
+    margin-top:80px;
+}
+.pos-main-img img{
+    pointer-events:none;
+    user-select:none;
+    max-width:100%;
+    width:150px;
+}
+
+.pos-card-gif{
+    margin-top:150px;
+}
+.pos-card-gif div img{
+    user-select:none;
+    pointer-events:none;
+}
+
+.pos-what-do{
+    margin-top:70px;
+}
+.pos-what-do img{
+    width:100px;
+    user-select:none;
+    pointer-events:none;
+}
+.pos-what-do div h1{
+    color:#494949;
+}
+
+.pos-main-btn{
+    margin-top:40px;
+}
+
+.edit-img-up{
+    margin-top:20px;
+    
+}
+
+.edit-footer-part{
+    margin-top:20px;
+}
+.edit-footer-part ul{
+    position: relative;
+    left:62px;
+    margin-top:50px;
+}
