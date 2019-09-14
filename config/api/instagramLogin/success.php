@@ -25,11 +25,8 @@
             // now you have access to all authenticated user methods
             $result = $instagram->getUser();
 
-            echo "<pre>";
-            var_dump($result);
-            echo "Olá amigo! :)";
-
-
+            
+            
             $profile_pic=$data->user->profile_picture;
             $user_id=$data->user->id;
             $posts = $data->counts->media;
@@ -40,12 +37,25 @@
             $bio=$data->user->bio;
             $website=$data->user->website;
             $token=$data->access_token;
-            //testando
+            
+            if(isset($_SESSION['logado'])){
+                setcookie('userID', $user_id, time()+86400);
+            }
+            //echo "<pre>";
+            //var_dump($result);
+
+
+            // TESTES
+            if($_SESSION['logado']==1){
+                echo "<br><br>Usuário logado. :)";
+            }else echo "<br><br>Usuário offline. :(";
+                
+            echo "<br>o ID do usuário é: ".$_COOKIE['userID'];
             echo "<br><br><br>Voce tem ".$followers." seguidores";
             echo "<br><br><br>Nome de usuario: ".$username;
 
+            
             $_SESSION['user_points'] = 0;
-
             $user_points = $_SESSION['user_points'];
             $erro;
             // Verify user details in USERS table
@@ -86,16 +96,22 @@
 
             // CREATING SESSIONS WITH USER INFO
                 
-            $query1 = "SELECT * FROM users_img WHERE user_id='$user_id'";
+            $query1 = "SELECT * FROM users_img WHERE user_id='{$_COOKIE['userID']}'";
             $dados1 = mysqli_query($conexao, $query1);
 
             if ($user_img = mysqli_fetch_assoc($dados1)) {
                 $profilePic = $user_img['profile_pic'];
             }
 
-            $query2 = "SELECT * FROM users_info WHERE user_id='$user_id'";
+            $query2 = "SELECT * FROM users_info WHERE user_id='{$_COOKIE['userID']}'";
             $dados2 = mysqli_query($conexao, $query1);
-            $user_info = mysqli_fetch_assoc($dados2);
+
+            if ($user_info = mysqli_fetch_assoc($dados2)) {
+                $userName = $user_info['username'];
+                $fullName = $user_info['fullname'];
+                $userID = $user_info['user_id'];
+            }
+            
 
 
 
@@ -105,18 +121,21 @@
                 $mudarAFoto = mysqli_query($conexao, $atualizarFoto);
             }
             
-
-
-
-           
-
-            //echo "<script> location.replace('/../../../inicio.php'); </script>";
+            
+            echo "<script> location.replace('/../../../inicio.php'); </script>";
             
         
     }
     
     // check whether an error occurred
     if (isset($_GET['error'])) {
+        echo "<script> swal({
+                    title: 'OPS!!...',
+                    text: 'Você deve aceitar para logar em sua conta :)',
+                    icon: 'error',
+                    button: 'Entendido',
+                }); 
+            </script>";
         echo "<script> location.replace('/../../../index.php'); </script>";
     }
 ?>

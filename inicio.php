@@ -64,8 +64,8 @@
                         <img src="<?php echo $profilePic; ?>">
                     </div>
                     <div class="text-center">
-                        <h4><?php echo $user_info['fullname']; ?></h4>
-                        <p><a href="https://instagram.com/<?php echo $user_info['username']; ?>" target="_blank"> <?php echo $user_info['username']; ?> </a></p>
+                        <h4><?php echo $fullName; ?></h4>
+                        <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo $user_info['username']; ?> </a></p>
                         <a href="config/php/logout-session.php" class="exit-edit"><i class="fas fa-sign-out-alt"></i> sair</a>
                     </div>
                 </div>
@@ -83,32 +83,71 @@
 				</ul>
             </nav>
             
-            <main>
-                <div class="row">
-                    <h2>Seu perfil do Instagram <i class="far fa-hand-point-down"></i></h2>
-                </div>
-                <div class="row">
-                    <div>
-                        <img src="<?php echo $_SESSION['profile_pic']; ?>">
-                    </div>
-                    
-                    <div>
-                        <span><?php 99 ?></span>
-                        <p>postagens</p>
-                    </div>
-
-                    <div>
-                        <span><?php 99999 ?></span>
-                        <p>seguidores</p>
-                    </div>
-                    <div>
-                        <span><?php 999 ?></span>
-                        <p>seguindo</p>
+            <div class="main-part mx-auto">
+                <div class="row justify-content-center text-title-profile">
+                    <div class="mx-auto p-2 px-4">
+                        <h2 class="text-center">Seu perfil do Instagram <i class="far fa-hand-point-down"></i></h2>
                     </div>
                 </div>
+                <div class="profile-part">
+                    <div class="row justify-content-center">
+                        <div class="main-profile-img">
+                            <img src="<?php echo $user_info['profile_pic']; ?>">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="text-center main-user-info">
+                            <h4><?php echo "Lucas Matheus"; ?></h4>
+                            <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo "@lucasmatheus_14"; ?> </a></p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center main-profile-foll">                    
+                        <div class="ml-2 mb-2 text-center col-10 col-lg-2">
+                            <span><?php echo "99"; ?></span>
+                            <p>postagens</p>
+                        </div>
+                        <div class="ml-2 mb-2 text-center col-10 col-lg-2">
+                            <span><?php echo "99999"; ?></span>
+                            <p>seguidores</p>
+                        </div>
+                        <div class="ml-2 mb-2 text-center col-10 col-lg-2">
+                            <span><?php echo "999"; ?></span>
+                            <p>seguindo</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center main-profile-bio">
+                        <div class="mt-4 ml-2 text-center">
+                            <h5>Biografia:</h5>
+                            <p><?php echo "BLABLA SUA biografia aqui Bla bla bla, nhenhe nhem, bla bla"; ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                
-            </main>
+            <div class="help-instructions">
+                <div class="row justify-content-center help-ico">
+                    <span><i class="fas fa-exclamation-circle"></i></span>
+                </div>
+                <div class="row help-text justify-content-center text-center">
+                    <div class="col-10 col-lg-6">
+                        <p>Nosso site possui algumas regras que são necessárias saber antes de começar a usar. Para saber mais sobre as regras basta clicar <a href="help.php">aqui</a> ou vá no menu e procure por 'ajuda'.</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="row edit-footer-part box-infos justify-content-center justify-content-lg-center justify-content-md-center">
+                <div class="col-lg-12 edit-share-btn sharethis-inline-share-buttons"></div>
+            </footer>
+            <div class="row pt-3 bg-copyright ">
+                <div class="col-lg-12" align="center">
+                    <p>© 2019 Copyright: <a href="https://hotfollow.com.br"><i>HotFollow</i></a></p>
+                </div>
+            </div>
+
+
+
+
+
 
         </div>
     </body>
