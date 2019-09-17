@@ -4,10 +4,9 @@
 
         require_once __DIR__.'/config/api/instagramLogin/success.php';
 
-        //require_once __DIR__.'/config/php/some-configs.php';
-        //loginDirectError(); //tirar o comentario depois
+        require_once __DIR__.'/config/php/some-configs.php';
+        loginDirectError(); 
 
-        
         
 ?>
 <!DOCTYPE html>
@@ -61,11 +60,11 @@
             <nav id="sidebar" class="nav-left-edit row collapse show width">
                 <div class="mx-auto mt-4 user-nav-part">
                     <div class="ml-4">
-                        <img src="<?php echo $profilePic; ?>">
+                        <img onclick="javascript: window.open('<?php echo $_SESSION['profile_pic']; ?>', '_blank');" src="<?php echo $_SESSION['profile_pic']; ?>">
                     </div>
                     <div class="text-center">
-                        <h4><?php echo $fullName; ?></h4>
-                        <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo $user_info['username']; ?> </a></p>
+                        <h4><?php echo $_SESSION['fullname']; ?></h4>
+                        <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo $_SESSION['username']; ?> </a></p>
                         <a href="config/php/logout-session.php" class="exit-edit"><i class="fas fa-sign-out-alt"></i> sair</a>
                     </div>
                 </div>
@@ -82,6 +81,19 @@
                     <li class="ch5"><a href="contact-us.php"><i class="fas fa-envelope"></i> Contato</a></li>
 				</ul>
             </nav>
+            <script>
+                $(document).mouseup(function(e){
+                    var container = $("#sidebar");
+
+                    if (!container.is(e.target) && container.has(e.target).length === 0){
+                        container.animate(left,'-50px');
+                    }
+                    if( $(divNome).on("click") ){
+                        container.animate(left,'0');
+                    }
+                });
+               
+            </script>
             
             <div class="main-part mx-auto">
                 <div class="row justify-content-center text-title-profile">
@@ -92,33 +104,39 @@
                 <div class="profile-part">
                     <div class="row justify-content-center">
                         <div class="main-profile-img">
-                            <img src="<?php echo $user_info['profile_pic']; ?>">
+                            <img src="<?php echo $_SESSION['profile_pic']; ?>">
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="text-center main-user-info">
-                            <h4><?php echo "Lucas Matheus"; ?></h4>
-                            <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo "@lucasmatheus_14"; ?> </a></p>
+                            <h4><?php echo $_SESSION['fullname']; ?></h4>
+                            <p><a href="https://instagram.com/<?php echo $_SESSION['username']; ?>" target="_blank"> <?php echo $_SESSION['username']; ?> </a></p>
                         </div>
                     </div>
                     <div class="row justify-content-center main-profile-foll">                    
                         <div class="ml-2 mb-2 text-center col-10 col-lg-2">
-                            <span><?php echo "99"; ?></span>
+                            <span><?php echo $_SESSION['posts']; ?></span>
                             <p>postagens</p>
                         </div>
                         <div class="ml-2 mb-2 text-center col-10 col-lg-2">
-                            <span><?php echo "99999"; ?></span>
+                            <span><?php echo $_SESSION['followers']; ?></span>
                             <p>seguidores</p>
                         </div>
                         <div class="ml-2 mb-2 text-center col-10 col-lg-2">
-                            <span><?php echo "999"; ?></span>
+                            <span><?php echo $_SESSION['follow']; ?></span>
                             <p>seguindo</p>
                         </div>
                     </div>
-                    <div class="row justify-content-center main-profile-bio">
-                        <div class="mt-4 ml-2 text-center">
-                            <h5>Biografia:</h5>
-                            <p><?php echo "BLABLA SUA biografia aqui Bla bla bla, nhenhe nhem, bla bla"; ?></p>
+                    <div class=" main-profile-bio mt-4 ml-3">
+                        <div class="row justify-content-center ">
+                            <div class="text-center">
+                                <h5 >Biografia:</h5>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="ml-3 col-11 col-lg-3">
+                                <p><?php echo $_SESSION['bio']; ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,10 +161,6 @@
                     <p>© 2019 Copyright: <a href="https://hotfollow.com.br"><i>HotFollow</i></a></p>
                 </div>
             </div>
-
-
-
-
 
 
         </div>

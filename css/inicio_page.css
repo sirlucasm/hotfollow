@@ -116,6 +116,9 @@ html, body{
     width:80px;
     cursor: pointer;
 }
+.user-nav-part div img:hover{
+    opacity:.8;
+}
 .user-nav-part div h4{
     color:#f1f1f1;
     font-size:18px;
@@ -142,9 +145,8 @@ html, body{
     user-select:none;
     pointer-events:none;
 }
-.main-part div div .main-user-info img{
+.main-part div div .main-profile-img img{
     border-radius:50%;
-    width:90px;
 }
 .main-part div div .main-user-info h4{
     color:#ffffff;
@@ -185,6 +187,7 @@ html, body{
 .help-instructions .help-text{
     font-size:23px;
     color:#868686;
+    margin-top:40px;
 }
 
 .bg-copyright div{
@@ -249,7 +252,7 @@ html, body{
 
 .help-instructions{
     position:relative;
-    margin-top:20px;
+    margin-top:40px;
 }
 
 .edit-footer-part{
