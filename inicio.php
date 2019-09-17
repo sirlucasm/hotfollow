@@ -39,7 +39,7 @@
         <script src="config/js/bootstrap-4.3.1/js/bootstrap.min.js"></script>
         <script src="config/js/scrollTopAction.js"></script>
     </head>
-    <body>
+    <body onload="exibirMenu()">
                 <!-- //////////  PAGE START  /////////// -->
         <div class="container-fluid" id="top">
             <nav class="row bg-nav edit-nav">
@@ -48,13 +48,18 @@
                 </div>
                 <div class="row navbar-header">
                     <div class="mt-4 ml-4 nav-btn-menu">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar" style="background:none; border:none; outline:none;">
+                        <button type="button" id="buttonOpen" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar" style="background:none; border:none; outline:none;">
                             <i class="fas fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
             </nav>
-            
+            <script>
+                function exibirMenu(){
+                    var container = $("#sidebar");
+                    container.animate({width:'300px'},'fast');
+                }
+            </script>
             
 
             <nav id="sidebar" class="nav-left-edit row collapse show width">
@@ -84,14 +89,17 @@
             <script>
                 $(document).mouseup(function(e){
                     var container = $("#sidebar");
-
-                    if (!container.is(e.target) && container.has(e.target).length === 0){
-                        container.animate(left,'-50px');
-                    }
-                    if( $(divNome).on("click") ){
-                        container.animate(left,'0');
+                    
+                    if (!container.is(e.target) && !containerButton.is(e.target) && container.has(e.target).length === 0){
+                        container.animate({left:'-400px'});
                     }
                 });
+                var containerButton = $("#buttonOpen");
+                    if( container.animate == ({left:'-400px'}) ){
+                        $(containerButton).on("click", function(){
+                            container.animate({left:'0'});
+                        });
+                    }
                
             </script>
             

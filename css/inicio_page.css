@@ -89,7 +89,7 @@ html, body{
 
 #sidebar{
     position: fixed;
-    width:300px;
+    width:0;
     height:100%;
     z-index:999;
     top:80px;
