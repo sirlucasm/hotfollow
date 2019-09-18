@@ -50,7 +50,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>HotFollow - Contato</title>
+        <title>Contato - HotFollow</title>
         <link rel="icon" href="img/f-icon.png" sizes="32x32" >
                 <!-- //////////  META TAGS  /////////// -->
         <meta name="title" content="Contate-nos - HotFollow">

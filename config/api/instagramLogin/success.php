@@ -58,26 +58,16 @@
             $_SESSION['username'] = $data->user->username;
             $_SESSION['fullname'] = $data->user->full_name;
             $_SESSION['bio'] = $data->user->bio;
-
-            setcookie('userID', $user_id, time()+86400);
-            $id_user = $_COOKIE['userID'];
-
-            echo "<pre>";
-            var_dump($result);
-
-
-            // TESTES
-            if($_SESSION['logado']==1){
-                echo "<br><br>Usuário logado. :)";
-            }else echo "<br><br>Usuário offline. :(";
-            
-            echo "<br>o ID do usuário é: ".$id_user;
-            echo "<br><br><br>Voce tem ".$posts." postagens";
-            echo "<br><br><br>Nome de usuario: ".$_SESSION['username'];
-
             
             $_SESSION['user_points'] = 0;
             $user_points = $_SESSION['user_points'];
+            
+            setcookie('userID', $user_id, time()+86400);
+            $id_user = $_COOKIE['userID'];
+
+            //echo "<pre>";
+            //var_dump($result);
+            
             $erro;
             // Verify user details in USERS table
             $resultUserInfo = "SELECT user_id FROM users_info WHERE user_id='$user_id'";

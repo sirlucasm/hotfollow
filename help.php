@@ -12,12 +12,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Inicio - HotFollow</title>
+        <title>Ajuda - HotFollow</title>
         <link rel="icon" href="img/f-icon.png" sizes="32x32" >
                 <!-- //////////  META TAGS  /////////// -->
-        <meta name="title" content="HotFollow - Inicio">
-        <meta name="description" content="Entre aqui no HotFollow com sua conta do Instagram para ganhar seguidores/curtidas">
-        <meta name="keywords" content="pagina de inicio, start page, inicio, inicio hotfollow">
+        <meta name="title" content="HotFollow - Ajuda">
+        <meta name="description" content="Tire suas dúvida - Perguntas frequentes - Deixe seu Feedback">
+        <meta name="keywords" content="pagina de ajuda, help page, ajuda, ajuda hotfollow">
         <meta name="robots" content="">
         <meta name="revisit-after" content="1 day">
         <meta name="language" content="Portuguese">
@@ -28,7 +28,7 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
                 <!-- //////////  LINKS CSS,JS,ICON ETC  /////////// -->
         <link rel="stylesheet" href="css/bootstrap-4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/inicio_page.css">
+        <link rel="stylesheet" href="css/help_page.css">
         <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
         
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -48,12 +48,12 @@
                 </div>
                 <div class="row navbar-header">
                     <div class="mt-4 ml-4 nav-btn-menu">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar" style="background:none; border:none; outline:none;">
+                        <button type="button" id="buttonOpen" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar" style="background:none; border:none; outline:none;">
                             <i class="fas fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
-            </nav>          
+            </nav>
 
             <nav id="sidebar" class="nav-left-edit row collapse show width">
                 <div class="mx-auto mt-4 user-nav-part">
@@ -84,63 +84,50 @@
             </nav>
             
             <div class="main-part mx-auto">
-                <div class="row justify-content-center text-title-profile">
-                    <div class="mx-auto p-2 px-4">
-                        <h2 class="text-center">Seu perfil do Instagram <i class="far fa-hand-point-down"></i></h2>
-                    </div>
+                <div class="help-title row justify-content-center">
+                    <h2>Ajuda</h2>
                 </div>
-                <div class="profile-part">
-                    <div class="row justify-content-center">
-                        <div class="main-profile-img">
-                            <img src="<?php echo $_SESSION['profile_pic']; ?>">
+                <div class="text-top row justify-content-center">
+                    <h5 class="col-lg-5">Olá <strong><?php echo $_SESSION['fullname']; ?></strong>, estamos aqui para responder de forma rápida algumas dúvidas que você talvez possa ter. 🙃</h5>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-8 col-lg-4">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action" id="list-duvida-1" data-toggle="list" href="#list-duvida1" role="tab" aria-controls="duvida1">A plataforma é segura?</a>
+                            <a class="list-group-item list-group-item-action" id="list-duvida-2" data-toggle="list" href="#list-duvida2" role="tab" aria-controls="duvida2">Sou novo por aqui, como ganho seguidores?</a>
+                            <a class="list-group-item list-group-item-action" id="list-duvida-3" data-toggle="list" href="#list-duvida3" role="tab" aria-controls="duvida3">Como ganho curtidas?</a>
+                            <a class="list-group-item list-group-item-action" id="list-duvida-4" data-toggle="list" href="#list-duvida4" role="tab" aria-controls="duvida4">Quantos seguidores/curtidas irei ganhar?</a>
                         </div>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="text-center main-user-info">
-                            <h4><?php echo $_SESSION['fullname']; ?></h4>
-                            <p><a href="https://instagram.com/<?php echo $_SESSION['username']; ?>" target="_blank"> <?php echo $_SESSION['username']; ?> </a></p>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center main-profile-foll">                    
-                        <div class="ml-2 mb-2 text-center col-10 col-lg-2">
-                            <span><?php echo $_SESSION['posts']; ?></span>
-                            <p>postagens</p>
-                        </div>
-                        <div class="ml-2 mb-2 text-center col-10 col-lg-2">
-                            <span><?php echo $_SESSION['followers']; ?></span>
-                            <p>seguidores</p>
-                        </div>
-                        <div class="ml-2 mb-2 text-center col-10 col-lg-2">
-                            <span><?php echo $_SESSION['follow']; ?></span>
-                            <p>seguindo</p>
-                        </div>
-                    </div>
-                    <div class=" main-profile-bio mt-4 ml-3">
-                        <div class="row justify-content-center ">
-                            <div class="text-center">
-                                <h5 >Biografia:</h5>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="mt-3 ml-3 col-11 col-lg-3">
-                                <p><?php echo $_SESSION['bio']; ?></p>
-                            </div>
+                    <div class="col-10 col-lg-6 my-lg-auto my-md-auto mt-5 ml-3 text-lg-left text-md-left text-sm-left text-center">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade" id="list-duvida1" role="tabpanel" aria-labelledby="list-duvida-1">Sim!! Quanto a segurança pode ficar tranquilo, somos os mais seguros e visamos o seu bem estar, além disso, nós não temos nosso próprio login, o login é do próprio Instagram que irá redirecionar sua conta para cá.</div>
+                            <div class="tab-pane fade" id="list-duvida2" role="tabpanel" aria-labelledby="list-duvida-2">É simples, basta ir no menu, em seguida 'Upar a Conta'. A partir dai você escolhe ganhar seguidores e selecionar a quantidade. Lembre-se de deixar sua conta em <strong>público</strong>, caso esteja privada. :)</div>
+                            <div class="tab-pane fade" id="list-duvida3" role="tabpanel" aria-labelledby="list-duvida-3">Vá em 'Upar a Conta' no menu, escolha por ganhar curtidas, irá aparecer suas fotos, basta escolher uma e selecionar a quantidade. Lembre-se de deixar sua conta em <strong>público</strong>, caso esteja privada. :)</div>
+                            <div class="tab-pane fade" id="list-duvida4" role="tabpanel" aria-labelledby="list-duvida-4">Você pode ganhar aproximadamente <strong>200 seguidores</strong> por dia; quando trocar seus pontos por seguidores/curtidas, você deve esperar 25 minutos até trocar novamente.</div>
                         </div>
                     </div>
                 </div>
+
+                <div class="feedback-part">
+                    <div class="row fdback-ico-img justify-content-center">
+                        <div>
+                            <img src="img/feedback-ico.png" alt="feedback img ico">
+                        </div>
+                    </div>
+                    <div class="row fdback-text justify-content-center">
+                        <div class="col-lg-7 text-center">
+                            <h4>Precisamos de seu feedback com a utilização de nosso site. Para nos mandar algum recado <a href="contact-us.php">clique aqui</a> ou vá em 'Contato' no menu. :)</h4>
+                            <h5 class="mt-4">Aguardamos sua mensagem!! 😉</h5>
+                        </div>
+                    </div>
+                </div>
+
+                
             </div>
 
-            <div class="help-instructions">
-                <div class="row justify-content-center help-ico">
-                    <span><i class="fas fa-exclamation-circle"></i></span>
-                </div>
-                <div class="row help-text justify-content-center text-center">
-                    <div class="col-10 col-lg-6">
-                        <p>Nosso site possui algumas regras que são necessárias saber antes de começar a usar. Para saber mais sobre as regras basta clicar <a href="help.php">aqui</a> ou vá no menu e procure por 'ajuda'.</p>
-                    </div>
-                </div>
-            </div>
-
+            
             <div class="row pt-3 bg-copyright ">
                 <div class="col-lg-12" align="center">
                     <p>© 2019 Copyright: <a href="https://hotfollow.com.br"><i>HotFollow</i></a></p>

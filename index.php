@@ -1,6 +1,8 @@
 <?php
     require_once __DIR__.'/config/api/settings.php';
     require_once __DIR__.'/config/php/some-configs.php';
+    require_once __DIR__.'/config/php/autoLinks.php';
+    require_once __DIR__.'/config/api/instagramLogin/success.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,9 +44,29 @@
                 <div class="ml-lg-5 ml-md-4 mt-2">
                     <a href="https://hotfollow.com.br"><img style="width:180px;" src="img/logo-hf.png"></a>
                 </div>
+
+            <?php 
+                // se não existir uma sessão logada irá aparecer 'Entrar'
+                if( !isset($_SESSION['logado']) ): 
+            ?>
                 <div class="edit-but-pos">
                     <button class="mr-lg-5 mr-md-4 mr-sm-4 mr-3 btn btn-outline mt-4" type="button" onclick="javascript: window.location='<?php echo $loginUrl; ?>';">Entrar</button>
                 </div>
+            <?php
+                else:
+            ?>
+                <div class="row justify-content-end">
+                    <div class="logged-part mt-4 mr-4 text-center">
+                        <a href="<?php echo $linkInicio; ?>">
+                            <img class="rounded-circle" src="<?php echo $_SESSION['profile_pic']; ?>">
+                            <span><?php echo $_SESSION['fullname']; ?></span>
+                        </a>
+                    </div>
+                </div>
+            <?php
+                endif;
+            ?>
+
             </nav>
             <div class="row justify-content-lg-start justify-content-md-start justify-content-start edit-front-text">
                 <div class="col-4 ml-4 mt-3 mt-lg-5 mt-sm-3 mt-md-5 col-sm-10 col-md-auto col-lg-auto">
@@ -62,7 +84,7 @@
                 <div class="pos-main-img col-lg-2 col-md-2 col-sm-3 col-3">
                     <img src="img/more-flw.png">
                 </div>
-                <div class=" pos-text-part pt-5 col-lg-8 col-md-9 col-sm-8 col-10 mt-lg-5 mt-auto">
+                <div class=" pos-text-part pt-5 col-lg-5 col-md-9 col-sm-8 col-10 mt-lg-5 mt-auto">
                     <h2 align="center">Ganhe seguidores e curtidas grátis.</h2>
                     <p align="center">Basta entrar com sua conta do instagram, juntar HotPoints (HP) e trocar eles por curtidas ou seguidores reais. </p>
                 </div>
@@ -76,7 +98,7 @@
                 <div class="pos-main-img col-lg-2 col-md-2 col-sm-3 col-3 ">
                     <img src="img/security-system.png">
                 </div>
-                <div class=" pos-text-part pt-5 col-lg-8 col-md-9 col-sm-8 col-10 mt-auto">
+                <div class=" pos-text-part pt-5 col-lg-5 col-md-9 col-sm-8 col-10 mt-auto">
                     <h2 align="center">Sua segurança é por conta da casa.</h2>
                     <p align="center">O <b>HotFollow</b> não compartilha nenhuma informação dos utilizadores do nosso sistema, além disso, criptografamos os dados para uma maior segurança</p>
                 </div>
@@ -90,7 +112,7 @@
                 <div class="pos-main-img col-lg-2 col-md-2 col-sm-3 col-3 ">
                     <img src="img/real-flw.png">
                 </div>
-                <div class=" pos-text-part pt-5 col-lg-8 col-md-9 col-sm-8 col-10 mt-auto">
+                <div class=" pos-text-part pt-5 col-lg-5 col-md-9 col-sm-8 col-10 mt-auto">
                     <h2 align="center">Seguidores reais</h2>
                     <p align="center">Os seguidores/curtidas ganhos são de perfis reais que utilizam a nossa plataforma. Basta começar e aumentar seus seguidores...</p>
                 </div>

@@ -40,20 +40,6 @@ html, body{
     background:#0c1f2e; 
 }
 
-.main-part .text-title-profile div{
-    background:#f7f7f7;
-}
-.main-part .profile-part{
-    background: #f98100;
-    padding:50px;
-}
-.main-part .profile-part .main-profile-foll div{
-    background:#d0720d;
-    border-radius:8px;
-    padding:5px;
-    width:auto;
-}
-
 .bg-copyright{
     background:#0a151d;
     background-size:200% 20px;
@@ -133,57 +119,11 @@ html, body{
     transition:.2s;
 }
 
-.main-part .text-title-profile div{
-    color:#868686;
-    border-radius:10px;
-    user-select:none;
-    pointer-events:none;
+.main-part .help-title h2{
+    color: #2e2e2e;
 }
-.main-part div div .main-profile-img img{
-    border-radius:50%;
-    width:160px;
-}
-.main-part div div .main-user-info h4{
-    color:#ffffff;
-    margin-top:20px;
-    user-select:none;
-}
-.main-part div div .main-user-info p a{
-    color:#e9e9e9;
-    text-decoration:none;
-    transition-duration:.1s;
-}
-.main-part div div .main-user-info p a:hover{
-    color:#dadada;
-}
-.main-part .profile-part .main-profile-foll div{
-    font-size:19px;
-}
-.main-part .profile-part .main-profile-foll div span{
-    color:#e9e9e9;
-    font-weight:600;
-}
-.main-part .profile-part .main-profile-foll div p{
-    color:#ffffff;
-    user-select:none;
-}
-.main-part .profile-part .main-profile-bio div h5{
-    color:#ffffff;
-    user-select:none;
-}
-.main-part .profile-part .main-profile-bio div p{
-    color:#e9e9e9;
-    font-size:18px;
-}
-
-.help-instructions .help-ico{
-    font-size:120px;
-}
-.help-instructions .help-text{
-    font-size:23px;
-    color:#868686;
-    margin-top:40px;
-    margin-bottom:60px;
+.main-part .text-top h5{
+    color: #5a5a5a;
 }
 
 .bg-copyright div{
@@ -201,6 +141,29 @@ html, body{
     color:#f98100;
 }
 
+.tab-pane{
+    pointer-events:none;
+    user-select:none;
+}
+
+.feedback-part .fdback-ico-img img{
+    user-select: none;
+    pointer-events:none;
+}
+.feedback-part .fdback-text div h4{
+    color: #5a5a5a;
+}
+.feedback-part .fdback-text div h4 a{
+    color: #f98100;
+    transition-duration:.2s;
+    text-decoration:none;
+}
+.feedback-part .fdback-text div h4 a:hover{
+    color:#ca5e25;
+}
+.feedback-part .fdback-text div h5{
+    color: #2e2e2e;
+}
 
 /*  EDIT POSITIONS  */
 
@@ -233,23 +196,24 @@ html, body{
     margin-top:20px;
 }
 
-.main-part{
-    position:relative;
-    margin-top:110px;
+.main-part .help-title{
+    margin-top:120px;
 }
-.main-part .profile-part{
-    margin-top:20px;
+.main-part .help-title{
+    margin-bottom:20px;
 }
-.main-part div div .main-profile-img{
-    margin-bottom:15px;
-}
-.main-part div div .main-user-info{
-    margin-bottom:30px;
+.main-part .text-top{
+    margin-bottom:60px;
 }
 
-.help-instructions{
-    position:relative;
-    margin-top:40px;
+.feedback-part{
+    margin-top:120px;
+}
+.feedback-part .fdback-ico-img{
+    margin-bottom:30px;
+}
+.feedback-part .fdback-text div h5{
+    margin-bottom:90px;
 }
 
 .edit-footer-part{
@@ -262,3 +226,6 @@ html, body{
     z-index:-1;
     bottom:30px;
 }
+
+
+
