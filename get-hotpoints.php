@@ -63,7 +63,7 @@
                     </div>
                     <div class="text-center">
                         <h4><?php echo $_SESSION['fullname']; ?></h4>
-                        <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo $_SESSION['username']; ?> </a></p>
+                        <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo "@".$_SESSION['username']; ?> </a></p>
                         <a href="config/php/logout-session.php" class="exit-edit"><i class="fas fa-sign-out-alt"></i> sair</a>
                     </div>
                 </div>
@@ -84,8 +84,47 @@
                 </footer>
             </nav>
             
-            <div class="main-part mx-auto">
+            <div class="main-part">
 
+                <div class="hotpoints-area">
+                    <div class="row justify-content-end">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default"><img src="img/hot-points-ico.png" alt="hotpoint icon"></span>
+                            </div>
+                            <div class="show-points form-control" aria-label="Default">
+                                <p><?php echo $_SESSION['user_points']; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="get-cards-edit row card-deck justify-content-center">
+                    <div class="card col-lg-3">
+                        <img class="card-img-top" src="img/get-following.png" alt="ganhar seguindo pessoas">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">+ HP's Seguindo</h3>
+                            <h5 class="card-text mt-4">Siga outros perfis e ganhe <b>HotPoints</b></h5>
+                            <button type="button" class="btn btn-primary btn-lg btn-block mt-5">Ganhar Agora</button>
+                        </div>
+                    </div>
+                    <div class="card col-lg-3">
+                        <img class="card-img-top" src="img/get-liking.png" alt="ganhar curtindo fotos">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">+ HP's Curtindo</h3>
+                            <h5 class="card-text mt-4">Curta fotos de outros perfis e ganhe <b>HotPoints</b></h5>
+                            <button type="button" class="btn btn-primary btn-lg btn-block mt-5">Ganhar Agora</button>
+                        </div>
+                    </div>
+                    <div class="card col-lg-3">
+                        <img class="card-img-top" src="img/get-watching.png" alt="ganhar assistindo anúncios">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">+ HP's Assistindo</h3>
+                            <h5 class="card-text mt-4">Assista pequenos anúncios publicitários e ganhe mais <b>HotPoints</b></h5>
+                            <button type="button" class="btn btn-primary btn-lg btn-block mt-5">Ganhar Agora</button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 

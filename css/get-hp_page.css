@@ -46,6 +46,10 @@ html, body{
     background-position:cover;
 }
 
+.main-part .hotpoints-area div div .input-group-text{
+    background:#efefef;
+}
+
 /*  EDIT TEXT and IMG MAIN PART  */
 
 .nav-btn-menu button i{
@@ -119,12 +123,23 @@ html, body{
     transition:.2s;
 }
 
-.main-part .help-title h2{
-    color: #2e2e2e;
+.main-part .hotpoints-area div div div span img{
+    user-select:none;
+    pointer-events:none;
 }
-.main-part .text-top h5{
-    color: #5a5a5a;
+.main-part .hotpoints-area div .input-group{
+    max-width:200px;
+    width:auto;
 }
+.main-part .hotpoints-area div div .show-points p{
+    color:#2e2e2e;
+}
+
+.get-cards-edit div img{
+    user-select:none;
+    pointer-events:none;
+}
+
 
 .bg-copyright div{
     font-size:12px;
@@ -171,6 +186,14 @@ html, body{
 
 .user-nav-part{
     margin-top:20px;
+}
+
+.main-part .hotpoints-area{
+    margin-top:120px;
+    margin-right:90px;
+}
+.main-part .get-cards-edit{
+    margin-top:100px;
 }
 
 .edit-footer-part{
