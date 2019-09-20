@@ -68,7 +68,7 @@
                     </div>
                     <div class="text-center">
                         <h4><?php echo $_SESSION['fullname']; ?></h4>
-                        <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo $_SESSION['username']; ?> </a></p>
+                        <p><a href="https://instagram.com/<?php echo $_SESSION['username']; ?>" target="_blank"> <?php echo "@".$_SESSION['username']; ?> </a></p>
                         <a href="config/php/logout-session.php" class="exit-edit"><i class="fas fa-sign-out-alt"></i> sair</a>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     <div class="row justify-content-center">
                         <div class="text-center main-user-info">
                             <h4><?php echo $_SESSION['fullname']; ?></h4>
-                            <p><a href="https://instagram.com/<?php echo $_SESSION['username']; ?>" target="_blank"> <?php echo $_SESSION['username']; ?> </a></p>
+                            <p><a href="https://instagram.com/<?php echo $_SESSION['username']; ?>" target="_blank"> <?php echo "@".$_SESSION['username']; ?> </a></p>
                         </div>
                     </div>
                     <div class="row justify-content-center main-profile-foll">                    

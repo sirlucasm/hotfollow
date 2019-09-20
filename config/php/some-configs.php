@@ -24,10 +24,10 @@
     }
 
     function firstTimeLogin(){
-        if(isset($_SESSION['firstWelcome'])){
+        if(isset($_SESSION['firstWelcome']) && !isset($_SESSION['alreadySigned'])){
             echo "<script>
                 Swal.fire({
-                    position: 'center-center',
+                    position: 'center',
                     type: 'success',
                     title: 'Eaii&nbsp;<strong>".$_SESSION['fullname']."</strong>!!',
                     html: '<h3> Seja bem vindo ao HotFollow. 😝</h3>',

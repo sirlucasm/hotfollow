@@ -16,6 +16,8 @@
 
     // check whether an error occurred
     if (isset($_GET['error'])) {
+        
+        echo "<script> location.replace('/../../../index.php'); </script>";
         echo "<script> swal({
                     title: 'OPS!!...',
                     text: 'Você deve aceitar para logar em sua conta :)',
@@ -23,7 +25,6 @@
                     button: 'Entendido',
                 }); 
             </script>";
-        echo "<script> location.replace('/../../../index.php'); </script>";
     }
 
     // check whether the user has granted access
@@ -81,6 +82,7 @@
                 $_SESSION['alreadySigned'] = true;
             }else{
                 $_SESSION['firstWelcome'] = true;
+                $_SESSION['sendEmailToAdmin'] = true;
 
                 // Inserting values into 'USERS_INFO' table
                 $sql1 = "INSERT INTO users_info(user_id, username, fullname, bio, access_token) VALUES ('$user_id','$username','$fullname','$bio','$token')";
@@ -108,7 +110,7 @@
                 $mail->isHTML(true);
                 $mail->Subject='|NOVO USUÁRIO| '.$_SESSION['fullname'];
                 $mail->Body='
-                
+                    
                     <center><img style=\'width:200px;\' src=\'https://hotfollow.com.br/img/logo-hf.png\'></center><br>
                     <center>
                         <h1>FOI CADASTRADO UM NOVO USUÁRIO!! 😍</h1>
@@ -123,8 +125,11 @@
                 ';
                 $mail->AltBody = 'NOVO USUÁRIO CADASTRADO!!  Informações:      Nome: '.$_SESSION['fullname'].'Usuário: '.$_SESSION['username'].'Biografia: '.$_SESSION['bio'].'ID do Instagram do usuário: '.$_SESSION['user_id'];
                 $mail->CharSet='utf-8';
-                $mail->send();
+                if($mail->send()){
+                    unset($_SESSION['sendEmailToAdmin']);
+                }
             }
+        
 
             
             //updates on BD
