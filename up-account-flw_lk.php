@@ -12,12 +12,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Inicio - HotFollow</title>
+        <title>Upar Conta Agora - HotFollow</title>
         <link rel="icon" href="img/f-icon.png" sizes="32x32" >
                 <!-- //////////  META TAGS  /////////// -->
-        <meta name="title" content="HotFollow - Inicio">
-        <meta name="description" content="Entre aqui no HotFollow com sua conta do Instagram para ganhar seguidores/curtidas">
-        <meta name="keywords" content="pagina de inicio, start page, inicio, inicio hotfollow">
+        <meta name="title" content="HotFollow - Upar a Conta">
+        <meta name="description" content="Escolha entra ganhar seguidores ou ganhar curtidas no HotFollow">
+        <meta name="keywords" content="pagina de upar conta, up account page, upar conta instagram, upar conta hotfollow, ganhar seguidores instagram, ganhar curtidas instagram, ganhar likes instagram, get instagram likes, get instagram followers">
         <meta name="robots" content="">
         <meta name="revisit-after" content="1 day">
         <meta name="language" content="Portuguese">
@@ -28,7 +28,7 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
                 <!-- //////////  LINKS CSS,JS,ICON ETC  /////////// -->
         <link rel="stylesheet" href="css/bootstrap-4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/inicio_page.css">
+        <link rel="stylesheet" href="css/up-acc_page.css">
         <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
@@ -41,11 +41,6 @@
         <script src="config/js/scrollTopAction.js"></script>
     </head>
     <body>
-        <?php
-            firstTimeLogin();
-            alreadyLogged();
-        ?>
-
                 <!-- //////////  PAGE START  /////////// -->
         <div class="container-fluid" id="top">
             <nav class="row bg-nav edit-nav">
@@ -54,12 +49,12 @@
                 </div>
                 <div class="row navbar-header">
                     <div class="mt-4 ml-4 nav-btn-menu">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar" style="background:none; border:none; outline:none;">
+                        <button type="button" id="buttonOpen" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar" style="background:none; border:none; outline:none;">
                             <i class="fas fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
-            </nav>          
+            </nav>
 
             <nav id="sidebar" class="nav-left-edit row collapse show width">
                 <div class="mx-auto mt-4 user-nav-part">
@@ -90,68 +85,16 @@
             </nav>
             
             <div class="main-part mx-auto">
-                <div class="row justify-content-center text-title-profile">
-                    <div class="mx-auto p-2 px-4">
-                        <h2 class="text-center">Seu perfil do Instagram <i class="far fa-hand-point-down"></i></h2>
-                    </div>
-                </div>
-                <div class="profile-part">
-                    <div class="row justify-content-center">
-                        <div class="main-profile-img">
-                            <img src="<?php echo $_SESSION['profile_pic']; ?>">
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="text-center main-user-info">
-                            <h4><?php echo $_SESSION['fullname']; ?></h4>
-                            <p><a href="https://instagram.com/<?php echo $_SESSION['username']; ?>" target="_blank"> <?php echo $_SESSION['username']; ?> </a></p>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center main-profile-foll">                    
-                        <div class="ml-2 mb-2 text-center col-10 col-lg-2">
-                            <span><?php echo $_SESSION['posts']; ?></span>
-                            <p>postagens</p>
-                        </div>
-                        <div class="ml-2 mb-2 text-center col-10 col-lg-2">
-                            <span><?php echo $_SESSION['followers']; ?></span>
-                            <p>seguidores</p>
-                        </div>
-                        <div class="ml-2 mb-2 text-center col-10 col-lg-2">
-                            <span><?php echo $_SESSION['follow']; ?></span>
-                            <p>seguindo</p>
-                        </div>
-                    </div>
-                    <div class=" main-profile-bio mt-4 ml-3">
-                        <div class="row justify-content-center ">
-                            <div class="text-center">
-                                <h5 >Biografia:</h5>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="mt-3 ml-3 col-11 col-lg-3">
-                                <p><?php echo $_SESSION['bio']; ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
 
-            <div class="help-instructions">
-                <div class="row justify-content-center help-ico">
-                    <span><i class="fas fa-exclamation-circle"></i></span>
-                </div>
-                <div class="row help-text justify-content-center text-center">
-                    <div class="col-10 col-lg-6">
-                        <p>Nosso site possui algumas regras que são necessárias saber antes de começar a usar. Para saber mais sobre as regras basta clicar <a href="help.php">aqui</a> ou vá no menu e procure por 'ajuda'.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row pt-3 bg-copyright ">
+            
+            <!-- <div class="row pt-3 bg-copyright ">
                 <div class="col-lg-12" align="center">
                     <p>© 2019 Copyright: <a href="https://hotfollow.com.br"><i>HotFollow</i></a></p>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>

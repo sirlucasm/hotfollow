@@ -140,40 +140,7 @@ html, body{
     text-decoration:none;
     color:#f98100;
 }
-/* '.tab-pane' respostas das perguntas*/
-.tab-pane{
-    pointer-events:none;
-    user-select:none;
-}
-.tab-pane a{
-    pointer-events:initial;
-    user-select:initial;
-    color:#f98100;
-    transition-duration:.2s;
-    text-decoration:none;
-}
-.tab-pane a:hover{
-    color:#ca5e25;
-}
 
-.feedback-part .fdback-ico-img img{
-    user-select: none;
-    pointer-events:none;
-}
-.feedback-part .fdback-text div h4{
-    color: #5a5a5a;
-}
-.feedback-part .fdback-text div h4 a{
-    color: #f98100;
-    transition-duration:.2s;
-    text-decoration:none;
-}
-.feedback-part .fdback-text div h4 a:hover{
-    color:#ca5e25;
-}
-.feedback-part .fdback-text div h5{
-    color: #2e2e2e;
-}
 
 /*  EDIT POSITIONS  */
 
@@ -204,26 +171,6 @@ html, body{
 
 .user-nav-part{
     margin-top:20px;
-}
-
-.main-part .help-title{
-    margin-top:120px;
-}
-.main-part .help-title{
-    margin-bottom:20px;
-}
-.main-part .text-top{
-    margin-bottom:60px;
-}
-
-.feedback-part{
-    margin-top:120px;
-}
-.feedback-part .fdback-ico-img{
-    margin-bottom:30px;
-}
-.feedback-part .fdback-text div h5{
-    margin-bottom:90px;
 }
 
 .edit-footer-part{

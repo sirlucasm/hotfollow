@@ -1,5 +1,7 @@
 <?php
     require_once __DIR__.'/config/api/settings.php';
+    require_once __DIR__.'/config/php/autoLinks.php';
+    require_once __DIR__.'/config/api/instagramLogin/success.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -36,9 +38,29 @@
                 <div class="ml-lg-5 ml-md-4 mt-3">
                     <a href="https://hotfollow.com.br"><img style="width:180px;" src="img/logo-hf.png"></a>
                 </div>
+
+            <?php 
+                // se não existir uma sessão logada irá aparecer 'Entrar'
+                if( !isset($_SESSION['logado']) ): 
+            ?>
                 <div class="edit-but-pos">
                     <button class="mr-lg-5 mr-md-4 mr-sm-4 mr-3 btn btn-outline mt-4" type="button" onclick="javascript: window.location='<?php echo $loginUrl; ?>';">Entrar</button>
                 </div>
+            <?php
+                else:
+            ?>
+                <div class="row justify-content-end">
+                    <div class="logged-part mt-4 mr-4 text-center">
+                        <a href="<?php echo $linkInicio; ?>">
+                            <img class="rounded-circle" src="<?php echo $_SESSION['profile_pic']; ?>">
+                            <span><?php echo $_SESSION['fullname']; ?></span>
+                        </a>
+                    </div>
+                </div>
+            <?php
+                endif;
+            ?>
+
             </nav>
 
             <div class="text-edit row justify-content-center">
@@ -50,8 +72,8 @@
                 <div class="col-md-9">
                     <p>Ao fazer o login em nosso site, entendemos para fins legais que você concordou com nossos termos e está ciente dos problemas que isso possa causar.</p>
                     <h4>I - Privacidade:</h4>
-                    <p>I.I - O HotFollow não armazena nenhuma imagem ou foto de usuário.</p>
-                    <p>I.II - O HotFollow não armazena nenhuma senha do Instagram permanentemente, mas, sua senha é armazenada temporariamente e de forma CRIPTOGRAFADA.</p>
+                    <p>I.I - O HotFollow armazena a foto do usuário por facilitção na hora de adquirir os usuários para seguir/curtir, mas são guardadas e <b>criptografadas</b>.</p>
+                    <p>I.II - O HotFollow não armazena nenhuma senha do Instagram.</p>
                     <p>I.III - O HotFollow armazena nome, id entre outros dados do utilizador.</p>
                     <p>I.IV - O HotFollow usa a API do Instagram como forma de conexão, além de uma conexão direta e segura com o servidor.</p>
                     <p>I.V - O HotFollow não tem permissão de excluir a conta do Instagram, não somos responsáveis por qualquer problema em sua conta.</p>
@@ -71,7 +93,6 @@
                     <h4>3 - Acesso ao Instagram:</h4>
                     <p>3.1 - O HotFollow, após sua autorização,  pode curtir à qualquer momento outros usuários usando sua conta.</p>
                     <p>3.2 - O HotFollow, após sua autorização,  pode seguir à qualquer momento outros usuários usando sua conta.</p>
-                    <p>3.3 - O HotFollow, após sua autorização,  pode comentar à qualquer momento outros usuários usando sua conta.</p>
                 </div>
             </div>
 

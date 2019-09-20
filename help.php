@@ -3,7 +3,7 @@
         ini_set("display_errors", 1);
 
         require_once __DIR__.'/config/api/instagramLogin/success.php';
-
+        require_once __DIR__.'/config/php/autoLinks.php';
         require_once __DIR__.'/config/php/some-configs.php';
         loginDirectError(); 
 
@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="css/help_page.css">
         <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
         
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5d669ef25fea9f001288d6c9&product=inline-share-buttons" async="async"></script>
         <link href="https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap" rel="stylesheet">
@@ -68,15 +69,15 @@
                 </div>
                 <ul class="mx-auto">
                     
-                    <li class="ch1"><a href="inicio.php"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="ch1"><a href="<?php echo $linkInicio; ?>"><i class="fas fa-home"></i> Inicio</a></li>
                     
-                    <li class="ch2"><a href="up-account-flw_lk.php"><i class="fas fa-plus-square"></i> Upar a conta</a></li>
+                    <li class="ch2"><a href="<?php echo $linkUPAcc; ?>"><i class="fas fa-plus-square"></i> Upar a conta</a></li>
                     
-                    <li class="ch3"><a href="get-hotpoints.php"><i class="fab fa-hotjar"></i> Ganhar HPs</a></li>
+                    <li class="ch3"><a href="<?php echo $linkGetHPS; ?>"><i class="fab fa-hotjar"></i> Ganhar HPs</a></li>
                     
-                    <li class="ch4"><a href="help.php"><i class="fas fa-info-circle"></i> Ajuda</a></li>
+                    <li class="ch4"><a href="<?php echo $linkHelp; ?>"><i class="fas fa-info-circle"></i> Ajuda</a></li>
                     
-                    <li class="ch5"><a href="contact-us.php"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li class="ch5"><a href="<?php echo $linkContactUS; ?>"><i class="fas fa-envelope"></i> Contato</a></li>
                 </ul>
                 <footer class="my-auto row edit-footer-part box-infos justify-content-center justify-content-lg-center justify-content-md-center">
                     <div class="col-lg-12 edit-share-btn sharethis-inline-share-buttons"></div>
@@ -98,6 +99,10 @@
                             <a class="list-group-item list-group-item-action" id="list-duvida-2" data-toggle="list" href="#list-duvida2" role="tab" aria-controls="duvida2">Sou novo por aqui, como ganho seguidores?</a>
                             <a class="list-group-item list-group-item-action" id="list-duvida-3" data-toggle="list" href="#list-duvida3" role="tab" aria-controls="duvida3">Como ganho curtidas?</a>
                             <a class="list-group-item list-group-item-action" id="list-duvida-4" data-toggle="list" href="#list-duvida4" role="tab" aria-controls="duvida4">Quantos seguidores/curtidas irei ganhar?</a>
+                            <a class="list-group-item list-group-item-action" id="list-duvida-5" data-toggle="list" href="#list-duvida5" role="tab" aria-controls="duvida5">Como funciona o HotFollow?</a>
+                            <a class="list-group-item list-group-item-action" id="list-duvida-6" data-toggle="list" href="#list-duvida6" role="tab" aria-controls="duvida6">E se eu der unfollow? Irei ser penalizado?</a>
+                            <a class="list-group-item list-group-item-action" id="list-duvida-7" data-toggle="list" href="#list-duvida7" role="tab" aria-controls="duvida7">O que são HP's?</a>
+                            <a class="list-group-item list-group-item-action" id="list-duvida-8" data-toggle="list" href="#list-duvida8" role="tab" aria-controls="duvida8">Como consigo esses HP's?</a>
                         </div>
                     </div>
                     <div class="col-10 col-lg-6 my-lg-auto my-md-auto mt-5 ml-3 text-lg-left text-md-left text-sm-left text-center">
@@ -106,6 +111,10 @@
                             <div class="tab-pane fade" id="list-duvida2" role="tabpanel" aria-labelledby="list-duvida-2">É simples, basta ir no menu, em seguida 'Upar a Conta'. A partir dai você escolhe ganhar seguidores e selecionar a quantidade. Lembre-se de deixar sua conta em <strong>público</strong>, caso esteja privada. :)</div>
                             <div class="tab-pane fade" id="list-duvida3" role="tabpanel" aria-labelledby="list-duvida-3">Vá em 'Upar a Conta' no menu, escolha por ganhar curtidas, irá aparecer suas fotos, basta escolher uma e selecionar a quantidade. Lembre-se de deixar sua conta em <strong>público</strong>, caso esteja privada. :)</div>
                             <div class="tab-pane fade" id="list-duvida4" role="tabpanel" aria-labelledby="list-duvida-4">Você pode ganhar aproximadamente <strong>200 seguidores</strong> por dia; quando trocar seus pontos por seguidores/curtidas, você deve esperar 25 minutos até trocar novamente.</div>
+                            <div class="tab-pane fade" id="list-duvida5" role="tabpanel" aria-labelledby="list-duvida-5">Assim que você loga com sua conta, você está aceitando os <a href="<?php echo $linkTermsUse; ?>">Termos de Uso</a> do HotFollow. Aqui você poderá seguir outros usuários, curtir fotos e assistir anúncios para ganhar mais HP's, podendo, então, trocá-los por Seguidores/Curtidas.</div>
+                            <div class="tab-pane fade" id="list-duvida6" role="tabpanel" aria-labelledby="list-duvida-6">O ato de unfollow (deixar de seguir) é ilegal aqui no HotFollow, pois irá prejudicar outro usuário. Você não gostaria de ser prejudicado né? Caso você dê unfollow, seus pontos irâo cair progressivamente e poderá ficar com saldo negativo. Ex:<br>1° unfollow<b>-2 HP's</b><br>2° unfollow<b>-4 HP's</b><br>3° unfollow<b>-6 HP's</b><br>4° unfollow<b>-8 HP's</b><br>...</div>
+                            <div class="tab-pane fade" id="list-duvida7" role="tabpanel" aria-labelledby="list-duvida-7">HP's = HotPoints. Os pontos são necessários para trocar por seguidores ou curtidas.</div>
+                            <div class="tab-pane fade" id="list-duvida8" role="tabpanel" aria-labelledby="list-duvida-8">Para conseguir HP's você pode seguir outros usuários (com um determinado limite, para o instagram não bloquear), curtir as fotos de outros usuários (o limite é necessário aqui também), assistindo pequenos anúncios publicitários ou compartilhando o HotFollow para seus amigos. 😉</div>
                         </div>
                     </div>
                 </div>
