@@ -75,7 +75,7 @@
             </div>
 
             <div class="edit-btn row justify-content-lg-start justify-content-md-start justify-content-sm-start justify-content-center ">
-                <div class=" col-lg-4 mt-lg-3 ml-lg-5 col-md-4 ml-md-5 col-sm-6 mt-sm-3 ml-sm-5 col-9 mt-3">
+                <div class=" col-lg-3 mt-lg-3 ml-lg-5 col-md-4 ml-md-5 col-sm-6 mt-sm-3 ml-sm-5 col-9 mt-3">
                     <button type="button" onclick="javascript: window.location='<?php echo $loginUrl; ?>';" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" >Começar agora</button>
                 </div>                    
             </div>

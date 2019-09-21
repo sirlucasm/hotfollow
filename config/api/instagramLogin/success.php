@@ -61,8 +61,13 @@
             $_SESSION['fullname'] = $data->user->full_name;
             $_SESSION['bio'] = $data->user->bio;
             
+            // GENERATOR de link de compartilhamento
+            $_SESSION['shareLink'] = "https://hotpoints.com.br/?sharelink=".$_SESSION['username'];
+            $_SESSION['sharedCount'] = 0;
+
             $_SESSION['user_points'] = 0;
             $user_points = $_SESSION['user_points'];
+
 
             //echo "<pre>";
             //var_dump($result);
@@ -199,4 +204,10 @@
     }
     
     
+    elseif( $_GET['sharelink'] ){
+        
+    }
+
+
+
 ?>

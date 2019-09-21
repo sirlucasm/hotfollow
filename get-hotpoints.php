@@ -87,8 +87,8 @@
             <div class="main-part">
 
                 <div class="hotpoints-area">
-                    <div class="row justify-content-end">
-                        <div class="input-group mb-3">
+                    <div class="row justify-content-lg-end justify-content-center">
+                        <div class="input-group mb-3 mr-lg-3 mr-md-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default"><img src="img/hot-points-ico.png" alt="hotpoint icon"></span>
                             </div>
@@ -100,25 +100,25 @@
                 </div>
 
                 <div class="get-cards-edit row card-deck justify-content-center">
-                    <div class="card col-lg-3">
+                    <div class="card col-lg-3 col-10 mx-auto">
                         <img class="card-img-top" src="img/get-following.png" alt="ganhar seguindo pessoas">
-                        <div class="card-body">
+                        <div class="get-hps-text card-body">
                             <h3 class="card-title text-center">+ HP's Seguindo</h3>
                             <h5 class="card-text mt-4">Siga outros perfis e ganhe <b>HotPoints</b></h5>
                             <button type="button" class="btn btn-primary btn-lg btn-block mt-5">Ganhar Agora</button>
                         </div>
                     </div>
-                    <div class="card col-lg-3">
+                    <div class="card col-lg-3 col-10 mx-auto">
                         <img class="card-img-top" src="img/get-liking.png" alt="ganhar curtindo fotos">
-                        <div class="card-body">
+                        <div class="get-hps-text card-body">
                             <h3 class="card-title text-center">+ HP's Curtindo</h3>
                             <h5 class="card-text mt-4">Curta fotos de outros perfis e ganhe <b>HotPoints</b></h5>
                             <button type="button" class="btn btn-primary btn-lg btn-block mt-5">Ganhar Agora</button>
                         </div>
                     </div>
-                    <div class="card col-lg-3">
+                    <div class="card col-lg-3 col-10 mx-auto">
                         <img class="card-img-top" src="img/get-watching.png" alt="ganhar assistindo anúncios">
-                        <div class="card-body">
+                        <div class="get-hps-text card-body">
                             <h3 class="card-title text-center">+ HP's Assistindo</h3>
                             <h5 class="card-text mt-4">Assista pequenos anúncios publicitários e ganhe mais <b>HotPoints</b></h5>
                             <button type="button" class="btn btn-primary btn-lg btn-block mt-5">Ganhar Agora</button>
@@ -128,7 +128,39 @@
 
             </div>
 
-            
+            <div class="share-area">
+                <div class="row justify-content-center">
+                    <div class="share-now px-4 text-center">
+                        <h2>Compartilhar Agora</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="share-ico">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="share-link share-link-text ml-4 mr-auto mr-lg-0 mr-md-0 mr-sm-0">
+                        <p>Link de compartilhamento <i class="fas fa-level-down-alt"></i></p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="share-link input-group mb-3 px-3 col-lg-4 col-md-7 col-sm-9">
+                        <input type="text" readonly class="form-control" id="share-link" value="<?php echo $_SESSION['shareLink']; ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-clone"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="mt-3">
+                        <h5><?php echo $_SESSION['sharedCount']; ?> pessoas utilizaram seu link <?php if($_SESSION['sharedCount']<=3){ echo '😔';} elseif($_SESSION['sharedCount']>3 && $_SESSION['sharedCount']<=6){ echo '👏'; } elseif($_SESSION['sharedCount']>6){ echo '😱'; } elseif($_SESSION['sharedCount']>12){ echo '🙀'; } ?></h5>
+                    </div>
+                </div>
+
+
+            </div>
+
             <!-- <div class="row pt-3 bg-copyright ">
                 <div class="col-lg-12" align="center">
                     <p>© 2019 Copyright: <a href="https://hotfollow.com.br"><i>HotFollow</i></a></p>
@@ -137,6 +169,30 @@
 
 
         </div>
+
+
+
+
+
+
+        
+        <script>
+            //  botão para copiar link de compartilhamento
+
+            $('#button-addon2').click(function(){
+                //Visto que o 'copy' copia o texto que estiver selecionado, talvez você queira colocar seu valor em um txt escondido
+                $('#share-link').select();
+                try {
+                    var ok = document.execCommand('copy');
+                    if (ok){
+                        alert('Texto copiado para a área de transferência'); }
+                    }
+                    catch (e){
+                        alert(e);
+                    }
+            });
+        </script>
+
     </body>
 </html>
 

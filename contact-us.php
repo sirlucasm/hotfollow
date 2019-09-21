@@ -45,6 +45,7 @@
     }
 
     require_once __DIR__.'/config/api/settings.php';
+    require_once __DIR__.'/config/php/autoLinks.php';
 
 ?>
 <!DOCTYPE html>
@@ -83,9 +84,29 @@
                 <div class="ml-lg-5 ml-md-4 mt-3">
                     <a href="https://hotfollow.com.br"><img style="width:180px;" src="img/logo-hf.png"></a>
                 </div>
+                
+                <?php 
+                // se não existir uma sessão logada irá aparecer 'Entrar'
+                if( !isset($_SESSION['logado']) ): 
+            ?>
                 <div class="edit-but-pos">
                     <button class="mr-lg-5 mr-md-4 mr-sm-4 mr-3 btn btn-outline mt-4" type="button" onclick="javascript: window.location='<?php echo $loginUrl; ?>';">Entrar</button>
                 </div>
+            <?php
+                else:
+            ?>
+                <div class="row justify-content-end">
+                    <div class="logged-part mt-4 mr-4 text-center">
+                        <a href="<?php echo $linkInicio; ?>">
+                            <img class="rounded-circle" src="<?php echo $_SESSION['profile_pic']; ?>">
+                            <span><?php echo $_SESSION['fullname']; ?></span>
+                        </a>
+                    </div>
+                </div>
+            <?php
+                endif;
+            ?>
+
             </nav>
 
             <div class="row edit-send-us-title  justify-content-center">

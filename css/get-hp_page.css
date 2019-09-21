@@ -134,12 +134,51 @@ html, body{
 .main-part .hotpoints-area div div .show-points p{
     color:#2e2e2e;
 }
-
+.get-hps-text button{
+    background:#f98100;
+    border:#f98100;
+}
+.get-hps-text button:hover{
+    background:#ca5e25;
+}
+.get-hps-text button:focus, .get-hps-text button:active{
+    box-shadow:0 0 0 0.2rem rgba(248, 133, 1, 0.63);
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+    background:#ca5e25;
+}
 .get-cards-edit div img{
     user-select:none;
     pointer-events:none;
 }
 
+.share-link-text p{
+    color:#777777;
+}
+.share-area .share-now h2{
+    font-weight:600;
+    color:#777777;
+    letter-spacing:2px;
+}
+.share-area .share-ico i{
+    font-size:120px;
+    color: #444444;
+    user-select:none;
+    pointer-events:none;
+}
+.share-area .share-ico i:hover{
+    color:#f98100;
+}
+.form-control[readonly]{
+    background:#f7f7f7;
+}
+.share-area .share-link div button i{
+    font-size:19px;
+}
+.share-area .share-link div button:hover{
+    background: #f98100;
+    border:1px solid #f98100;
+}
 
 .bg-copyright div{
     font-size:12px;
@@ -190,10 +229,19 @@ html, body{
 
 .main-part .hotpoints-area{
     margin-top:120px;
-    margin-right:90px;
 }
 .main-part .get-cards-edit{
     margin-top:100px;
+}
+
+.share-area{
+    margin-top:90px;    
+}
+.share-link-text{
+    margin-top:80px;
+}
+.share-area .share-ico{
+    margin-top:40px;
 }
 
 .edit-footer-part{

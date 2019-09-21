@@ -30,6 +30,26 @@ html, body{
 
 /*  EDIT TEXT and IMG MAIN PART  */
 
+.logged-part a img{
+    width:35px;
+    transition-duration:.3s;
+}
+.logged-part a img:hover{
+    opacity:.8;
+}
+.logged-part a span{
+    font-size:12px;
+    margin-left:8px;
+}
+.logged-part a{
+    text-decoration:none;
+    color: #ececec;
+    transition-duration:.3s;
+}
+.logged-part a:hover{
+    color:#c9c9c9;
+}
+
 .edit-send-us-title div h2{
     color:#494949;
     font-size:38px;
