@@ -152,22 +152,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="mt-3">
-                        <h5><?php echo $_SESSION['sharedCount']; ?> pessoas utilizaram seu link <?php if($_SESSION['sharedCount']<=3){ echo '😔';} elseif($_SESSION['sharedCount']>3 && $_SESSION['sharedCount']<=6){ echo '👏'; } elseif($_SESSION['sharedCount']>6){ echo '😱'; } elseif($_SESSION['sharedCount']>12){ echo '🙀'; } ?></h5>
+                <div class="count-shared-area">
+                    <div class="row justify-content-center">
+                        <div class="mt-3">
+                            <h5><?php echo $_SESSION['sharedCount']; ?> pessoas utilizaram seu link <?php if($_SESSION['sharedCount']<=3){ echo '😔';} elseif($_SESSION['sharedCount']>3 && $_SESSION['sharedCount']<=6){ echo '👏'; } elseif($_SESSION['sharedCount']>6){ echo '😱'; } elseif($_SESSION['sharedCount']>12){ echo '🙀'; } ?></h5>
+                        </div>
                     </div>
                 </div>
 
-
             </div>
-
-            <!-- <div class="row pt-3 bg-copyright ">
+            <div class="row pt-3 bg-copyright ">
                 <div class="col-lg-12" align="center">
                     <p>© 2019 Copyright: <a href="https://hotfollow.com.br"><i>HotFollow</i></a></p>
                 </div>
-            </div> -->
-
-
+            </div>
         </div>
 
 
