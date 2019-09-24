@@ -44,6 +44,7 @@
         <?php
             firstTimeLogin();
             alreadyLogged();
+            congratulationsSharedLink();
         ?>
 
                 <!-- //////////  PAGE START  /////////// -->

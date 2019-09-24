@@ -183,11 +183,21 @@
                 try {
                     var ok = document.execCommand('copy');
                     if (ok){
-                        alert('Texto copiado para a área de transferência'); }
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+                        Toast.fire({
+                            type: 'success',
+                            title: 'Link copiado para área de transferência'
+                        });
                     }
-                    catch (e){
-                        alert(e);
-                    }
+                }
+                catch (e){
+                    alert(e);
+                }
             });
         </script>
 

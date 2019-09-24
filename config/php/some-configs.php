@@ -53,4 +53,20 @@
         }
     }
 
+    function congratulationsSharedLink(){
+        if(isset($_SESSION['congratulations'])){
+            echo "<script>
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Você foi convidado por ".$_GET['sharelink']." e ganhou 10 pontos 😝',
+                    html: '<h3> Seja bem vindo ao HotFollow!!</h3>',
+                    showConfirmButton: false,
+                    timer: 5000
+                })
+            </script>";
+            unset($_SESSION['congratulations']);
+        }
+    }
+
 ?>

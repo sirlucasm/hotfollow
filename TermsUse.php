@@ -109,7 +109,7 @@
                 </ul>
                 <ul class="col-md-2 col-lg-2 box-info-item" align="center">
                     <li><h3>Atalhos</h3></li>
-                    <li><a href="javascript: function(){ return false; }" onclick="javascript: window.location='<?php echo $loginUrl; ?>';">Ganhar Seguidores/curtidas</a></li>
+                    <li><a href="javascript: function(){ return false; }" onclick="javascript: window.location='<?php if(!isset($_SESSION['logado'])){ echo $loginUrl; }else{ echo $linkInicio; } ?>';">Ganhar Seguidores/curtidas</a></li>
                     <li><p onclick="javascript:window.location='https://hotfollow.com.br#what-do';">O que fazer?</p></li>
                     <li><p onclick="javascript:window.location='https://hotfollow.com.br#about';">Sobre</p></li>
                 </ul>

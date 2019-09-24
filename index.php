@@ -76,7 +76,7 @@
 
             <div class="edit-btn row justify-content-lg-start justify-content-md-start justify-content-sm-start justify-content-center ">
                 <div class=" col-lg-3 mt-lg-3 ml-lg-5 col-md-4 ml-md-5 col-sm-6 mt-sm-3 ml-sm-5 col-9 mt-3">
-                    <button type="button" onclick="javascript: window.location='<?php echo $loginUrl; ?>';" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" >Começar agora</button>
+                    <button type="button" onclick="javascript: window.location='<?php if(!isset($_SESSION['logado'])){ echo $loginUrl; }else{ echo $linkInicio; } ?>';" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" >Começar agora</button>
                 </div>                    
             </div>
             
@@ -125,7 +125,7 @@
                         <h3 class="card-title">Forma rápida de ganhar...</h3>
                         <p class="card-text">Temos uma fácil interface para você ganhar acessos em seu perfil rapidamente, podendo ganhar em apenas 1 dia mais de <b>200 seguidores</b>; em uma semana <b>1400 seguidores</b></p>
                         <div class="pos-main-btn edit-btn col-md-9">
-                            <button type="button" onclick="javascript: window.location='<?php echo $loginUrl; ?>';" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" >Ganhar Seguidores Agora</button>
+                            <button type="button" onclick="javascript: window.location='<?php if(!isset($_SESSION['logado'])){ echo $loginUrl; }else{ echo $linkInicio; } ?>';" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" >Ganhar Seguidores Agora</button>
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                 <div class="col-md-5 col-lg-3 h-auto list-group-item" style="background:#ff7d38;">
                     <img src="img/login.png">
                     <h3>Login</h3>
-                    <p>Faça o login com sua conta do instagram <a href="javascript:function() { return false; }" onclick="javascript: window.location='<?php echo $loginUrl; ?>';">aqui</a> no <b>HotFollow</b>, na primeira vez logado aqui, você deve autorizar o acesso no aplicativo do Instagram, em "Fui eu".</p>
+                    <p>Faça o login com sua conta do instagram <a href="javascript:function() { return false; }" onclick="javascript: window.location='<?php if(!isset($_SESSION['logado'])){ echo $loginUrl; }else{ echo $linkInicio; } ?>';">aqui</a> no <b>HotFollow</b>, na primeira vez logado aqui, você deve autorizar o acesso no aplicativo do Instagram, em "Fui eu".</p>
                 </div>
                 <div class="col-md-5 col-lg-3 h-auto list-group-item" style="background:#ff7d38;">
                     <img src="img/like-or-follow.png">
@@ -176,7 +176,7 @@
                 </ul>
                 <ul class="col-md-2 col-lg-2 box-info-item" align="center">
                     <li><h3>Atalhos</h3></li>
-                    <li><a href="javascript:function() { return false; }" onclick="javascript: window.location='<?php echo $loginUrl; ?>';">Ganhar Seguidores/curtidas</a></li>
+                    <li><a href="javascript:function() { return false; }" onclick="javascript: window.location='<?php if(!isset($_SESSION['logado'])){ echo $loginUrl; }else{ echo $linkInicio; } ?>';">Ganhar Seguidores/curtidas</a></li>
                     <li><p onclick="scrTopWhatDO();">O que fazer?</p></li>
                     <li><p onclick="scrTopAbout();">Sobre</p></li>
                 </ul>
