@@ -178,147 +178,127 @@
                 $mudarBio = mysqli_query($conexao, $atualizarBio);
             }
 
+            
 
 
-            // @@@@@##### OBTER INFORMAÇÕES DO BANCO DE DADOS
-            /*    
-            $query1 = "SELECT * FROM users_img WHERE user_id='$id_user'";
-            $dados1 = mysqli_query($conexao, $query1);
-
-            if ($user_img = mysqli_fetch_assoc($dados1)) {
-                $profilePic = $user_img['profile_pic'];
-            }
-
-            $query2 = "SELECT * FROM users_info WHERE user_id='$id_user'";
-            $dados2 = mysqli_query($conexao, $query1);
-
-            if ($user_info = mysqli_fetch_assoc($dados2)) {
-                $userName = $user_info['username'];
-                $fullName = $user_info['fullname'];
-                $userID = $user_info['user_id'];
-            }
-            */
             
             
-            echo "<script> location.replace('/../../../inicio.php'); </script>";
+           echo "<script> location.replace('/../../../inicio.php'); </script>";
             
         
     }
     
     
     if( $_GET['sharelink'] ){
-        if($_GET['code']){
-    
-            $_SESSION['logado'] = true;
-            $_SESSION['sharedCount']++;
+        
+        $_SESSION['logado'] = true;
+        $_SESSION['sharedCount']++;
 
-            // Storing instagram user data into session
-            $data = $instagram->getOAuthToken($_GET['code']);
-            $instagram->setSignedHeader(true); //security
-            // store user access token
-            $instagram->setAccessToken($data);
-            // now you have access to all authenticated user methods
-            $result = $instagram->getUser();
+        // Storing instagram user data into session
+        $data = $instagram->getOAuthToken($_GET['code']);
+        $instagram->setSignedHeader(true); //security
+        // store user access token
+        $instagram->setAccessToken($data);
+        // now you have access to all authenticated user methods
+        $result = $instagram->getUser();
 
-            
-            
-            $profile_pic = $data->user->profile_picture;
-            $user_id = $data->user->id;
-            $posts = $data->counts->media;
-            $follow = $data->counts->follows;
-            $followers = $data->counts->followed_by; 
-            $username = $data->user->username;
-            $fullname = $data->user->full_name;
-            $bio = $data->user->bio;
-            $website = $data->user->website;
-            $token = $data->access_token;
-            
-            $_SESSION['user_id'] = $data->user->id;
-            $_SESSION['profile_pic'] = $data->user->profile_picture;
-            $_SESSION['posts'] = $data->counts->media;
-            $_SESSION['follow'] = $data->counts->follows;
-            $_SESSION['followers'] = $data->counts->followed_by;
-            $_SESSION['username'] = $data->user->username;
-            $_SESSION['fullname'] = $data->user->full_name;
-            $_SESSION['bio'] = $data->user->bio;
-            $_SESSION['access_token'] = $data->access_token;
-            
-            // GENERATOR de link de compartilhamento
-            $_SESSION['shareLink'] = "https://hotfollow.com.br/?sharelink=".$_SESSION['username'];
+        
+        
+        $profile_pic = $data->user->profile_picture;
+        $user_id = $data->user->id;
+        $posts = $data->counts->media;
+        $follow = $data->counts->follows;
+        $followers = $data->counts->followed_by; 
+        $username = $data->user->username;
+        $fullname = $data->user->full_name;
+        $bio = $data->user->bio;
+        $website = $data->user->website;
+        $token = $data->access_token;
+        
+        $_SESSION['user_id'] = $data->user->id;
+        $_SESSION['profile_pic'] = $data->user->profile_picture;
+        $_SESSION['posts'] = $data->counts->media;
+        $_SESSION['follow'] = $data->counts->follows;
+        $_SESSION['followers'] = $data->counts->followed_by;
+        $_SESSION['username'] = $data->user->username;
+        $_SESSION['fullname'] = $data->user->full_name;
+        $_SESSION['bio'] = $data->user->bio;
+        $_SESSION['access_token'] = $data->access_token;
+        
+        // GENERATOR de link de compartilhamento
+        $_SESSION['shareLink'] = "https://hotfollow.com.br/?sharelink=".$_SESSION['username'];
 
-            // Verify user details in USERS table
-            $resultUserInfo = "SELECT user_id FROM users_info WHERE user_id='{$_SESSION['user_id']}'";
-            $resultUserImg = "SELECT user_id FROM users_img WHERE user_id='{$_SESSION['user_id']}'";
-            $resultUserPoints = "SELECT user_id FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
-            
-            $validacao_final1 = mysqli_query($conexao, $resultUserInfo);
-            $validacao_final2 = mysqli_query($conexao, $resultUserImg);
-            $validacao_final3 = mysqli_query($conexao, $resultUserPoints);
+        // Verify user details in USERS table
+        $resultUserInfo = "SELECT user_id FROM users_info WHERE user_id='{$_SESSION['user_id']}'";
+        $resultUserImg = "SELECT user_id FROM users_img WHERE user_id='{$_SESSION['user_id']}'";
+        $resultUserPoints = "SELECT user_id FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
+        
+        $validacao_final1 = mysqli_query($conexao, $resultUserInfo);
+        $validacao_final2 = mysqli_query($conexao, $resultUserImg);
+        $validacao_final3 = mysqli_query($conexao, $resultUserPoints);
 
 
-            if( mysqli_num_rows($validacao_final1)>0 && mysqli_num_rows($validacao_final2)>0 && mysqli_num_rows($validacao_final3)>0){
-                $_SESSION['alreadySigned'] = true;
-            }else{
-                $_SESSION['user_points']+=10;
-                $_SESSION['firstWelcome'] = true;
-                $_SESSION['sendEmailToAdmin'] = true;
+        if( mysqli_num_rows($validacao_final1)>0 && mysqli_num_rows($validacao_final2)>0 && mysqli_num_rows($validacao_final3)>0){
+            $_SESSION['alreadySigned'] = true;
+        }else{
+            $_SESSION['user_points']+=10;
+            $_SESSION['firstWelcome'] = true;
+            $_SESSION['sendEmailToAdmin'] = true;
 
-                // Inserting values into 'USERS_INFO' table
-                $sql1 = "INSERT INTO users_info(user_id, username, fullname, bio, access_token) VALUES ('{$_SESSION['user_id']}','{$_SESSION['username']}','{$_SESSION['fullname']}','{$_SESSION['bio']}','{$_SESSION['access_token']}')";
-                $showInfo = mysqli_query($conexao,$sql1);
-                // Inserting values into 'USERS_IMG' table
-                $sql2 = "INSERT INTO users_img(user_id, username, profile_pic) VALUES ('{$_SESSION['user_id']}','{$_SESSION['username']}','{$_SESSION['profile_pic']}')";
-                $showImg = mysqli_query($conexao,$sql2);
-                // Inserting values into 'USERS_HOTPOINTS' table
-                $sql3 = "INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('{$_SESSION['user_id']}','{$_SESSION['username']}','{$_SESSION['user_points']}')";
-                $showPoints = mysqli_query($conexao,$sql3);
+            // Inserting values into 'USERS_INFO' table
+            $sql1 = "INSERT INTO users_info(user_id, username, fullname, bio, access_token) VALUES ('{$_SESSION['user_id']}','{$_SESSION['username']}','{$_SESSION['fullname']}','{$_SESSION['bio']}','{$_SESSION['access_token']}')";
+            $showInfo = mysqli_query($conexao,$sql1);
+            // Inserting values into 'USERS_IMG' table
+            $sql2 = "INSERT INTO users_img(user_id, username, profile_pic) VALUES ('{$_SESSION['user_id']}','{$_SESSION['username']}','{$_SESSION['profile_pic']}')";
+            $showImg = mysqli_query($conexao,$sql2);
+            // Inserting values into 'USERS_HOTPOINTS' table
+            $sql3 = "INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('{$_SESSION['user_id']}','{$_SESSION['username']}','{$_SESSION['user_points']}')";
+            $showPoints = mysqli_query($conexao,$sql3);
 
-                $mail = new PHPMailer;
-                $mail->Host='mail.hotfollow.com.br';
-                $mail->Port=465;
-                $mail->isSMTP();  
-                $mail->SMTPAuth=true;
-                $mail->SMTPSecure='ssl';
-                $mail->Username='contato@hotfollow.com.br';
-                $mail->Password='vida280119';
-                $mail->Priority = 1; 
+            $mail = new PHPMailer;
+            $mail->Host='mail.hotfollow.com.br';
+            $mail->Port=465;
+            $mail->isSMTP();  
+            $mail->SMTPAuth=true;
+            $mail->SMTPSecure='ssl';
+            $mail->Username='contato@hotfollow.com.br';
+            $mail->Password='vida280119';
+            $mail->Priority = 1; 
 
-                $mail->setFrom('contato@hotfollow.com.br','Avisos HotFollow');
-                $mail->addAddress('contatohotfollow@gmail.com','Equipe HotFollow');
+            $mail->setFrom('contato@hotfollow.com.br','Avisos HotFollow');
+            $mail->addAddress('contatohotfollow@gmail.com','Equipe HotFollow');
 
-                $mail->isHTML(true);
-                $mail->Subject='|NOVO USUÁRIO| '.$_SESSION['fullname'];
-                $mail->Body='
-                    
-                    <center><img style=\'width:200px;\' src=\'https://hotfollow.com.br/img/logo-hf.png\'></center><br>
-                    <center>
-                        <h1>FOI CADASTRADO UM NOVO USUÁRIO!! 😍</h1>
-                        <h3>Através do link de compartilhamento do usuário '.$_GET['sharelink'].'</h3>
-                        <h2>Informações do usuário: </h2>
-                    </center>
-                    <h3>Nome:</h3> <i>'.$_SESSION['fullname'].'</i> <br>
-                    <h3>Usuário:</h3> <i>'.$_SESSION['username'].'</i> <br>
-                    <h3>Biografia:</h3> <i>'.$_SESSION['bio'].'</i> <br>
-                    <h3>ID do Instagram do usuário:</h3> <i>'.$_SESSION['user_id'].'</i> <br><br><br><br>
-                    <h4>Atenciosamente,<br>
-                    Equipe HotFollow. ✌</h4>
-                ';
-                $mail->AltBody = 'NOVO USUÁRIO CADASTRADO!!  Informações:      Nome: '.$_SESSION['fullname'].'Usuário: '.$_SESSION['username'].'Biografia: '.$_SESSION['bio'].'ID do Instagram do usuário: '.$_SESSION['user_id'];
-                $mail->CharSet='utf-8';
-                if($mail->send()){
-                    unset($_SESSION['sendEmailToAdmin']);
-                }
+            $mail->isHTML(true);
+            $mail->Subject='|NOVO USUÁRIO| '.$_SESSION['fullname'];
+            $mail->Body='
+                
+                <center><img style=\'width:200px;\' src=\'https://hotfollow.com.br/img/logo-hf.png\'></center><br>
+                <center>
+                    <h1>FOI CADASTRADO UM NOVO USUÁRIO!! 😍</h1>
+                    <h3>Através do link de compartilhamento do usuário '.$_GET['sharelink'].'</h3>
+                    <h2>Informações do usuário: </h2>
+                </center>
+                <h3>Nome:</h3> <i>'.$_SESSION['fullname'].'</i> <br>
+                <h3>Usuário:</h3> <i>'.$_SESSION['username'].'</i> <br>
+                <h3>Biografia:</h3> <i>'.$_SESSION['bio'].'</i> <br>
+                <h3>ID do Instagram do usuário:</h3> <i>'.$_SESSION['user_id'].'</i> <br><br><br><br>
+                <h4>Atenciosamente,<br>
+                Equipe HotFollow. ✌</h4>
+            ';
+            $mail->AltBody = 'NOVO USUÁRIO CADASTRADO!!  Informações:      Nome: '.$_SESSION['fullname'].'Usuário: '.$_SESSION['username'].'Biografia: '.$_SESSION['bio'].'ID do Instagram do usuário: '.$_SESSION['user_id'];
+            $mail->CharSet='utf-8';
+            if($mail->send()){
+                unset($_SESSION['sendEmailToAdmin']);
             }
-
-            $_SESSION['congratulations'] = true;
-
-
-
-
-
-
-
         }
+
+        $_SESSION['congratulations'] = true;
+
+
+
+
+
+
     }
 
 

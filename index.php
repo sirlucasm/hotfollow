@@ -7,10 +7,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148698821-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-148698821-1');
+        </script>
+
         <title>HotFollow</title>
         <link rel="icon" href="img/f-icon.png" sizes="32x32" >
                 <!-- //////////  META TAGS  /////////// -->
-        <meta name="title" content="HotFollow - Seguidores e Curtidas Grátis no Instagram">
+        <meta name="title" content="Hot Follow - Seguidores e Curtidas Grátis no Instagram">
         <meta name="description" content="Com o Hot Follow você consegue seguidores no instagram de uma forma rápida e eficaz para sua conta bombar e ter vários acessos.">
         <meta name="keywords" content="seguidores instagram, followers for instagram, follow4follow, follow for follow, seguir e seguir de volta, seguidores, instagram, insta followers, insta seguidores, seguidores insta, insta follow, coins insta, hot follow, hotfollow, followers, f4f, ganhar seguidores no instagram, seguidores no instagram gratis">
         <meta name="robots" content="">

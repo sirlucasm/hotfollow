@@ -6,6 +6,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148698821-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-148698821-1');
+        </script>
+
         <title>Termos de Uso - HotFollow</title>
         <link rel="icon" href="img/f-icon.png" sizes="32x32" >
                 <!-- //////////  META TAGS  /////////// -->
