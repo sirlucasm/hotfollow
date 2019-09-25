@@ -193,7 +193,10 @@
         
         $_SESSION['logado'] = true;
         $_SESSION['sharedCount']++;
-
+        
+        session_destroy();
+        session_start();
+        
         // Storing instagram user data into session
         $data = $instagram->getOAuthToken($_GET['code']);
         $instagram->setSignedHeader(true); //security
@@ -229,9 +232,9 @@
         $_SESSION['shareLink'] = "https://hotfollow.com.br/?sharelink=".$_SESSION['username'];
 
         // Verify user details in USERS table
-        $resultUserInfo = "SELECT user_id FROM users_info WHERE user_id='{$_SESSION['user_id']}'";
-        $resultUserImg = "SELECT user_id FROM users_img WHERE user_id='{$_SESSION['user_id']}'";
-        $resultUserPoints = "SELECT user_id FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
+        $resultUserInfo = "SELECT user_id FROM users_info WHERE user_id='$user_id'";
+        $resultUserImg = "SELECT user_id FROM users_img WHERE user_id='$user_id'";
+        $resultUserPoints = "SELECT user_id FROM users_hotpoints WHERE user_id='$user_id'";
         
         $validacao_final1 = mysqli_query($conexao, $resultUserInfo);
         $validacao_final2 = mysqli_query($conexao, $resultUserImg);
@@ -241,18 +244,18 @@
         if( mysqli_num_rows($validacao_final1)>0 && mysqli_num_rows($validacao_final2)>0 && mysqli_num_rows($validacao_final3)>0){
             $_SESSION['alreadySigned'] = true;
         }else{
-            $_SESSION['user_points']+=10;
             $_SESSION['firstWelcome'] = true;
             $_SESSION['sendEmailToAdmin'] = true;
+            $_SESSION['user_points'] += 10;
 
             // Inserting values into 'USERS_INFO' table
-            $sql1 = "INSERT INTO users_info(user_id, username, fullname, bio, access_token) VALUES ('{$_SESSION['user_id']}','{$_SESSION['username']}','{$_SESSION['fullname']}','{$_SESSION['bio']}','{$_SESSION['access_token']}')";
+            $sql1 = "INSERT INTO users_info(user_id, username, fullname, bio, access_token) VALUES ('$user_id','$username','$fullname','$bio','$token')";
             $showInfo = mysqli_query($conexao,$sql1);
             // Inserting values into 'USERS_IMG' table
-            $sql2 = "INSERT INTO users_img(user_id, username, profile_pic) VALUES ('{$_SESSION['user_id']}','{$_SESSION['username']}','{$_SESSION['profile_pic']}')";
+            $sql2 = "INSERT INTO users_img(user_id, username, profile_pic) VALUES ('$user_id','$username','$profile_pic')";
             $showImg = mysqli_query($conexao,$sql2);
             // Inserting values into 'USERS_HOTPOINTS' table
-            $sql3 = "INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('{$_SESSION['user_id']}','{$_SESSION['username']}','{$_SESSION['user_points']}')";
+            $sql3 = "INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('$user_id','$username','$user_points')";
             $showPoints = mysqli_query($conexao,$sql3);
 
             $mail = new PHPMailer;
