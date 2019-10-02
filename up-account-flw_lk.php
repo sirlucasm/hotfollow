@@ -7,7 +7,10 @@
         require_once __DIR__.'/config/php/some-configs.php';
         loginDirectError(); 
 
-        
+        // @@@@@##### OBTER INFORMAÇÕES DO BANCO DE DADOS
+        $query = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
+        $dados = mysqli_query($conexao, $query);
+        $user_hotpoints = $dados->fetch_array();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -95,7 +98,120 @@
             </nav>
             
             <div class="main-part mx-auto">
+                <div class="hotpoints-area">
+                    <div class="row justify-content-lg-end justify-content-center">
+                        <div class="input-group mb-3 mr-lg-3 mr-md-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default"><img src="img/hot-points-ico.png" alt="hotpoint icon"></span>
+                            </div>
+                            <div class="show-points form-control" aria-label="Default">
+                                <p><?php echo $user_hotpoints['user_points']; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row justify-content-center get-area">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-followers-tab" data-toggle="pill" href="#pills-followers" role="tab" aria-controls="pills-followers" aria-selected="true">Ganhar seguidores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-likes-tab" data-toggle="pill" href="#pills-likes" role="tab" aria-controls="pills-likes" aria-selected="false">Ganhar curtidas</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content get-area" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-followers" role="tabpanel" aria-labelledby="pills-followers-tab">
+                        <div class="get-followers">
+                            <div class="row justify-content-center">
+                                <div class="">
+                                    <div class="">
+                                        <h5><i class="fas fa-angle-double-up"></i> +15 seguidores</h5>
+                                    </div>
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary">-5 HP's</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="">
+                                    <div class="">
+                                        <h5><i class="fas fa-angle-double-up"></i> +30 seguidores</h5>
+                                    </div>
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary">-15 HP's</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="">
+                                    <div class="">
+                                        <h5><i class="fas fa-angle-double-up"></i> +50 seguidores</h5>
+                                    </div>
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary">-30 HP's</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="">
+                                    <div class="">
+                                        <h5><i class="fas fa-angle-double-up"></i> +80 seguidores</h5>
+                                    </div>
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary">-50 HP's</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-likes" role="tabpanel" aria-labelledby="pills-likes-tab">
+                        <div class="get-likes">
+                            <div class="row justify-content-center">
+                                <div class="">
+                                    <div class="">
+                                        <h5><i class="fas fa-heart"></i> +15 curtidas</h5>
+                                    </div>
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary">-5 HP's</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="">
+                                    <div class="">
+                                        <h5><i class="fas fa-heart"></i> +30 curtidas</h5>
+                                    </div>
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary">-15 HP's</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="">
+                                    <div class="">
+                                        <h5><i class="fas fa-heart"></i> +50 curtidas</h5>
+                                    </div>
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary">-30 HP's</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="">
+                                    <div class="">
+                                        <h5><i class="fas fa-heart"></i> +80 curtidas</h5>
+                                    </div>
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary">-50 HP's</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
