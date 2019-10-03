@@ -3,6 +3,7 @@
         ini_set("display_errors", 1);
 
         require_once __DIR__.'/config/api/instagramLogin/success.php';
+        require_once __DIR__.'/config/api/instagramLogin/verify_share_link.php';
         require_once __DIR__.'/config/php/autoLinks.php';
         require_once __DIR__.'/config/php/some-configs.php';
         loginDirectError(); 

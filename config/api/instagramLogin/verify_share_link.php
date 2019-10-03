@@ -1,48 +1,39 @@
 <?php
 
-    require_once __DIR__.'/success.php';
+    require_once __DIR__.'/../../php/sending-email.php';
 
-    if( $_GET['sharelink'] ){
-        $_SESSION['sharedCount']++;
-        $mail = new PHPMailer;
-        $mail->Host='mail.hotfollow.com.br';
-        $mail->Port=465;
-        $mail->isSMTP();  
-        $mail->SMTPAuth=true;
-        $mail->SMTPSecure='ssl';
-        $mail->Username='contato@hotfollow.com.br';
-        $mail->Password='vida280119';
-        $mail->Priority = 1; 
+    function shareLinkConfigs(){
+        
+        //verificação para saber se o novo usuário existe
+        $resultUserShared = "SELECT user_id FROM users_shared WHERE user_id='{$_SESSION['user_id']}'"; 
+        $validacao_final2 = mysqli_query($conexao, $resultUserShared);
 
-        $mail->setFrom('contato@hotfollow.com.br','Avisos HotFollow');
-        $mail->addAddress('contatohotfollow@gmail.com','Equipe HotFollow');
-
-        $mail->isHTML(true);
-        $mail->Subject='|NOVO USUÁRIO| '.$_SESSION['fullname'];
-        $mail->Body='
+        if( mysqli_num_rows($validacao_final2)>0 ){
+            $jaTemConta = 1;
+        }else{
+            $shareLinkUsado = $_GET['sharelink'];
+            $_SESSION['shareLinkUsado'] = $_GET['sharelink'];
+            // Inserting values into 'USERS_SHARED' table
+            $sql2 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('$shareLinkUsado','{$_SESSION['sharedCount']}, '{$_SESSION['user_id']}')";
+            $insertShared = mysqli_query($conexao,$sql2);
             
-            <center><img style=\'width:200px;\' src=\'https://hotfollow.com.br/img/logo-hf.png\'></center><br>
-            <center>
-                <h1>FOI CADASTRADO UM NOVO USUÁRIO!! 😍</h1>
-                <h3>Através do link de compartilhamento do usuário '.$_GET['sharelink'].'</h3>
-                <h2>Informações do usuário: </h2>
-            </center>
-            <h3>Nome:</h3> <i>'.$_SESSION['fullname'].'</i> <br>
-            <h3>Usuário:</h3> <i>'.$_SESSION['username'].'</i> <br>
-            <h3>Biografia:</h3> <i>'.$_SESSION['bio'].'</i> <br>
-            <h3>ID do Instagram do usuário:</h3> <i>'.$_SESSION['user_id'].'</i> <br><br><br><br>
-            <h4>Atenciosamente,<br>
-            Equipe HotFollow. ✌</h4>
-        ';
-        $mail->AltBody = 'NOVO USUÁRIO CADASTRADO!!  Informações:      Nome: '.$_SESSION['fullname'].'Usuário: '.$_SESSION['username'].'Biografia: '.$_SESSION['bio'].'ID do Instagram do usuário: '.$_SESSION['user_id'];
-        $mail->CharSet='utf-8';
-        if($mail->send()){
-            unset($_SESSION['sendEmailToAdmin']);
+            newUserToAdminEmailWithShareLink();
+            
+            
+            $idUsuarioIndicado = $_SESSION['user_id'];
+            if($shareLinkUsado != $idUsuarioIndicado){
+                $_SESSION['congratulations'] = true;
+                //update points do indicador e do indicado
+                $atualizarPontos = "UPDATE users_hotpoints SET user_points='{$_SESSION['user_points']}'+10 WHERE user_id='$shareLinkUsado' AND user_id='{$_SESSION['user_id']}'";
+                $mudarPontos = mysqli_query($conexao, $atualizarPontos);
+
+                //increment share count do indicador
+                $atualizarSharedCount = "UPDATE users_shared SET sharedCount='{$_SESSION['sharedCount']}'+1 WHERE user_id='$shareLinkUsado'";
+                $mudarSharedCount = mysqli_query($conexao, $atualizarSharedCount);
+            }
+
         }
-
-        $_SESSION['congratulations'] = true;
-
-
     }
+
 
 ?>

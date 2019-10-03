@@ -8,9 +8,12 @@
         loginDirectError(); 
 
         // @@@@@##### OBTER INFORMAÇÕES DO BANCO DE DADOS
-        $query = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
-        $dados = mysqli_query($conexao, $query);
-        $user_hotpoints = $dados->fetch_array();
+        $queryPoints = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
+        $querySharedCount = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
+        $dados1 = mysqli_query($conexao, $queryPoints);
+        $dados2 = mysqli_query($conexao, $querySharedCount);
+        $users_hotpoints = $dados1->fetch_array();
+        $users_shared = $dados2->fetch_array();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -96,7 +99,7 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default"><img src="img/hot-points-ico.png" alt="hotpoint icon"></span>
                             </div>
                             <div class="show-points form-control" aria-label="Default">
-                                <p><?php echo $user_hotpoints['user_points']; ?></p>
+                                <p><?php echo $users_hotpoints['user_points']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -158,7 +161,25 @@
                 <div class="count-shared-area">
                     <div class="row justify-content-center">
                         <div class="mt-3">
-                            <h5><?php echo $_SESSION['sharedCount']; ?> pessoas utilizaram seu link <?php if($_SESSION['sharedCount']<=3){ echo '😔';} elseif($_SESSION['sharedCount']>3 && $_SESSION['sharedCount']<=6){ echo '👏'; } elseif($_SESSION['sharedCount']>6){ echo '😱'; } elseif($_SESSION['sharedCount']>12){ echo '🙀'; } ?></h5>
+                            <h5><?php 
+                                if(isset($users_shared['sharedCount'])){ 
+                                    if($users_shared['sharedCount']<=3){ 
+                                        echo $users_shared['sharedCount'].' pessoas utilizaram seu link 😔';
+                                    } 
+                                    elseif($users_shared['sharedCount']>3 && $users_shared['sharedCount']<=6){ 
+                                        echo '👏'; 
+                                    } 
+                                    elseif($users_shared['sharedCount']>6 && $users_shared['sharedCount']<=12){ 
+                                        echo $users_shared['sharedCount'].' pessoas utilizaram seu link 😱'; 
+                                    } 
+                                    elseif($users_shared['sharedCount']>12){ 
+                                        echo $users_shared['sharedCount'].' pessoas utilizaram seu link 🙀'; 
+                                    }    
+                                } 
+                                else{ 
+                                    echo 'Você ainda não compartilhou com niguém 😔'; 
+                                } 
+                                ?></h5>
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,10 @@
 <?php
     
     require_once __DIR__.'/../api/instagramLogin/success.php';
-    
+    require_once __DIR__.'/autoLinks.php';
     function loginDirectError(){
         if(!isset($_SESSION['logado'])){
-            echo "<script> location.replace('index.php'); </script>";
+            echo "<script> location.replace('/../../index.php'); </script>";
             $_SESSION['aviso']=true;
             die();
         }
@@ -59,8 +59,8 @@
                 Swal.fire({
                     position: 'center',
                     type: 'success',
-                    title: 'Você foi convidado por ".$_GET['sharelink']." e ganhou 10 pontos 😝',
-                    html: '<h3> Seja bem vindo ao HotFollow!!</h3>',
+                    title: 'Parabéns!!',
+                    html: '<h3> Você usou link de compartilhamento e ganhou 10 pontos 😝</h3>',
                     showConfirmButton: false,
                     timer: 5000
                 })
@@ -68,5 +68,7 @@
             unset($_SESSION['congratulations']);
         }
     }
+
+
 
 ?>
