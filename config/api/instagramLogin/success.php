@@ -75,8 +75,8 @@
             
 
             // Verify user details in USERS table
-            $resultUserInfo = "SELECT user_id FROM users_info WHERE user_id='$user_id'";       
-            $resultUserPoints = "SELECT user_id FROM users_hotpoints WHERE user_id='$user_id'";
+            $resultUserInfo = "SELECT user_id FROM users_info WHERE user_id='{$_SESSION['user_id']}'";       
+            $resultUserPoints = "SELECT user_id FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
             
             $validacao_final1 = mysqli_query($conexao, $resultUserInfo);
             $validacao_final2 = mysqli_query($conexao, $resultUserPoints);
@@ -92,25 +92,26 @@
                 $_SESSION['sendEmailToAdmin'] = true;
 
                 // Inserting values into 'USERS_INFO' table
-                $sql1 = "INSERT INTO users_info(user_id, username, fullname, access_token) VALUES ('$user_id','$username','$fullname','$token')";
+                $sql1 = "INSERT INTO users_info(user_id, username, fullname, access_token) VALUES ('{$_SESSION['user_id']}','$username','$fullname','$token')";
                 $insertInfo = mysqli_query($conexao,$sql1);
                 // Inserting values into 'USERS_HOTPOINTS' table
-                $sql2 = "INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('$user_id','$username','$user_points')";
-                $insertPoints = mysqli_query($conexao,$sql3);
+                $sql2 = "INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('{$_SESSION['user_id']}','$username','$user_points')";
+                $insertPoints = mysqli_query($conexao,$sql2);
                 newUserToAdminEmail();
             }
             
             if(isset($_SESSION['estaUsandoShareLink'])){
-                shareLinkConfigs();
+                shareLinkConfigs($conexao);
             }
             
             
-           echo "<script> location.replace('/../../../inicio.php'); </script>";
+            echo "<script> location.replace('/../../../inicio.php'); </script>";
             
         
     }
     //verificar se o usuario esta usando algum link de compartilhamento
     if( isset($_GET['sharelink']) ){
+        $_SESSION['shareId'] = $_GET['sharelink'];
         $_SESSION['estaUsandoShareLink'] = true;
     }
 

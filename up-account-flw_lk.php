@@ -10,7 +10,7 @@
         // @@@@@##### OBTER INFORMAÇÕES DO BANCO DE DADOS
         $query = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
         $dados = mysqli_query($conexao, $query);
-        $user_hotpoints = $dados->fetch_array();
+        $users_hotpoints = $dados->fetch_array();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -105,7 +105,7 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default"><img src="img/hot-points-ico.png" alt="hotpoint icon"></span>
                             </div>
                             <div class="show-points form-control" aria-label="Default">
-                                <p><?php echo $user_hotpoints['user_points']; ?></p>
+                                <p><?php echo $users_hotpoints['user_points']; ?></p>
                             </div>
                         </div>
                     </div>

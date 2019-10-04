@@ -9,7 +9,7 @@
 
         // @@@@@##### OBTER INFORMAÇÕES DO BANCO DE DADOS
         $queryPoints = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
-        $querySharedCount = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
+        $querySharedCount = "SELECT * FROM users_shared WHERE user_id='{$_SESSION['user_id']}'";
         $dados1 = mysqli_query($conexao, $queryPoints);
         $dados2 = mysqli_query($conexao, $querySharedCount);
         $users_hotpoints = $dados1->fetch_array();

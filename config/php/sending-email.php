@@ -104,7 +104,7 @@
             <center><img style=\'width:200px;\' src=\'https://hotfollow.com.br/img/logo-hf.png\'></center><br>
             <center>
                 <h1>FOI CADASTRADO UM NOVO USUÁRIO!! 😍</h1>
-                <h3>Através de um link de compartilhamento</h3>
+                <h3>Através do link de compartilhamento do ID:<br>'.$_SESSION['shareId'].'</h3>
                 <h2>Informações do usuário: </h2>
             </center>
             <h3>Nome:</h3> <i>'.$_SESSION['fullname'].'</i> <br>
