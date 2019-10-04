@@ -112,100 +112,100 @@
                 </div>
 
                 <div class="row justify-content-center get-area">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="pills-followers-tab" data-toggle="pill" href="#pills-followers" role="tab" aria-controls="pills-followers" aria-selected="true">Ganhar seguidores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-likes-tab" data-toggle="pill" href="#pills-likes" role="tab" aria-controls="pills-likes" aria-selected="false">Ganhar curtidas</a>
-                        </li>
-                    </ul>
+                    <div class="">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-followers-tab" data-toggle="tab" href="#nav-followers" role="tab" aria-controls="nav-followers" aria-selected="true">Ganhar Seguidores</a>
+                                <a class="nav-item nav-link" id="nav-likes-tab" data-toggle="tab" href="#nav-likes" role="tab" aria-controls="nav-likes" aria-selected="false">Ganhar curtidas</a>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
 
-                <div class="tab-content get-area" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-followers" role="tabpanel" aria-labelledby="pills-followers-tab">
+                <div class="tab-content get-area get-margin-bottom" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-followers" role="tabpanel" aria-labelledby="nav-followers-tab">
                         <div class="get-followers">
                             <div class="row justify-content-center">
-                                <div class="">
+                                <div class="ml-5">
                                     <div class="">
                                         <h5><i class="fas fa-angle-double-up"></i> +15 seguidores</h5>
                                     </div>
                                     <div class="">
-                                        <button type="button" class="btn btn-primary">-5 HP's</button>
+                                        <button type="button" class="btn btn-primary btn-sm"><strong>-5 HP's</strong></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="">
+                                <div class="ml-5">
                                     <div class="">
                                         <h5><i class="fas fa-angle-double-up"></i> +30 seguidores</h5>
                                     </div>
                                     <div class="">
-                                        <button type="button" class="btn btn-primary">-15 HP's</button>
+                                        <button type="button" class="btn btn-primary btn-sm"><strong>-15 HP's</strong></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="">
+                                <div class="ml-5">
                                     <div class="">
                                         <h5><i class="fas fa-angle-double-up"></i> +50 seguidores</h5>
                                     </div>
                                     <div class="">
-                                        <button type="button" class="btn btn-primary">-30 HP's</button>
+                                        <button type="button" class="btn btn-primary btn-sm"><strong>-30 HP's</strong></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="">
+                                <div class="ml-5">
                                     <div class="">
                                         <h5><i class="fas fa-angle-double-up"></i> +80 seguidores</h5>
                                     </div>
                                     <div class="">
-                                        <button type="button" class="btn btn-primary">-50 HP's</button>
+                                        <button type="button" class="btn btn-primary btn-sm"><strong>-50 HP's</strong></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-likes" role="tabpanel" aria-labelledby="pills-likes-tab">
+                    <div class="tab-pane fade" id="nav-likes" role="tabpanel" aria-labelledby="nav-likes-tab">
                         <div class="get-likes">
                             <div class="row justify-content-center">
-                                <div class="">
+                                <div class="ml-5">
                                     <div class="">
                                         <h5><i class="fas fa-heart"></i> +15 curtidas</h5>
                                     </div>
                                     <div class="">
-                                        <button type="button" class="btn btn-primary">-5 HP's</button>
+                                        <button type="button" class="btn btn-primary btn-sm"><strong>-5 HP's</strong></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="">
+                                <div class="ml-5">
                                     <div class="">
                                         <h5><i class="fas fa-heart"></i> +30 curtidas</h5>
                                     </div>
                                     <div class="">
-                                        <button type="button" class="btn btn-primary">-15 HP's</button>
+                                        <button type="button" class="btn btn-primary btn-sm"><strong>-15 HP's</strong></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="">
+                                <div class="ml-5">
                                     <div class="">
                                         <h5><i class="fas fa-heart"></i> +50 curtidas</h5>
                                     </div>
                                     <div class="">
-                                        <button type="button" class="btn btn-primary">-30 HP's</button>
+                                        <button type="button" class="btn btn-primary btn-sm"><strong>-30 HP's</strong></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="">
+                                <div class="ml-5">
                                     <div class="">
                                         <h5><i class="fas fa-heart"></i> +80 curtidas</h5>
                                     </div>
                                     <div class="">
-                                        <button type="button" class="btn btn-primary">-50 HP's</button>
+                                        <button type="button" class="btn btn-primary btn-sm"><strong>-50 HP's</strong></button>
                                     </div>
                                 </div>
                             </div>
@@ -216,11 +216,11 @@
             </div>
 
             
-            <!-- <div class="row pt-3 bg-copyright ">
+            <div class="row pt-3 bg-copyright ">
                 <div class="col-lg-12" align="center">
                     <p>© 2019 Copyright: <a href="https://hotfollow.com.br"><i>HotFollow</i></a></p>
                 </div>
-            </div> -->
+            </div>
 
 
         </div>

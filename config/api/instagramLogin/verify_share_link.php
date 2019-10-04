@@ -7,15 +7,15 @@
         
         //verificação para saber se o novo usuário existe
         $resultUserShared = "SELECT user_id FROM users_shared WHERE user_id='{$_SESSION['user_id']}'"; 
-        $validacao_final2 = mysqli_query($conexao, $resultUserShared);
+        $validacao_final3 = mysqli_query($conexao, $resultUserShared);
 
-        if( mysqli_num_rows($validacao_final2)>0 ){
+        if( mysqli_num_rows($validacao_final3)>0 ){
             $jaTemConta = 1;
             echo "<script> alert('ja registrado no shared link'); </script>";
         }else{
             // Inserting values into 'USERS_SHARED' table
-            $sql2 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['shareId']}','{$_SESSION['sharedCount']}, '{$_SESSION['user_id']}')";
-            $insertShared = mysqli_query($conexao,$sql2);
+            $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['shareId']}','{$_SESSION['sharedCount']}, '{$_SESSION['user_id']}')";
+            $insertShared = mysqli_query($conexao,$sql3);
             
             newUserToAdminEmailWithShareLink();
             
@@ -24,7 +24,7 @@
             if($_SESSION['shareId'] != $idUsuarioIndicado){
                 $_SESSION['congratulations'] = true;
                 //update points do indicador e do indicado
-                $atualizarPontos = "UPDATE users_hotpoints SET user_points='{$_SESSION['user_points']}'+10 WHERE user_id='{$_SESSION['shareId']}' AND user_id='{$_SESSION['user_id']}'";
+                $atualizarPontos = "UPDATE users_hotpoints SET user_points='{$_SESSION['user_points']}'+10 WHERE user_id='{$_SESSION['shareId']}' OR user_id='{$_SESSION['user_id']}'";
                 $mudarPontos = mysqli_query($conexao, $atualizarPontos);
 
                 //increment share count do indicador

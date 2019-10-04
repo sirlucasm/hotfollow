@@ -97,6 +97,9 @@
                 // Inserting values into 'USERS_HOTPOINTS' table
                 $sql2 = "INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('{$_SESSION['user_id']}','$username','$user_points')";
                 $insertPoints = mysqli_query($conexao,$sql2);
+                // Inserting values into 'USERS_SHARED' table
+                $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['shareId']}','{$_SESSION['sharedCount']}, '{$_SESSION['user_id']}')";
+                $insertShared = mysqli_query($conexao,$sql3);
                 newUserToAdminEmail();
             }
             
