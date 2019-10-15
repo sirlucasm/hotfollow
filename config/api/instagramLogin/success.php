@@ -45,17 +45,17 @@
             //var_dump($result);
             
             $profile_pic = $data->user->profile_picture;
-            $user_id = $data->user->id;
-            $posts = $data->counts->media;
-            $follow = $data->counts->follows;
-            $followers = $data->counts->followed_by; 
+            $user_id = $result->data->id;
+            $posts = $result->data->counts->media;
+            $follow = $result->data->counts->follows;
+            $followers = $result->data->counts->followed_by;
             $username = $data->user->username;
             $fullname = $data->user->full_name;
             $bio = $data->user->bio;
             $website = $data->user->website;
             $token = $data->access_token;
             
-            $_SESSION['user_id'] = $data->user->id;
+            $_SESSION['user_id'] = $result->data->id;
             $_SESSION['profile_pic'] = $data->user->profile_picture;
             $_SESSION['posts'] = $result->data->counts->media;
             $_SESSION['follow'] = $result->data->counts->follows;
@@ -67,7 +67,7 @@
             
             // GENERATOR de link de compartilhamento apenas se o usuario existir
             $_SESSION['shareLink'] = "https://hotfollow.com.br/?sharelink=".$_SESSION['user_id'];
-            $sharedCount = 0;
+            $sharedCount = 1;
             $_SESSION['sharedCount'] = $sharedCount;
 
             $user_points = 0;
@@ -86,21 +86,25 @@
                 $_SESSION['alreadySigned'] = true;
 
                 //UPDATES ON BD
-                updatesBD($conexao);
+                updateID($conexao);
+                updateUsuario($conexao);
+                updateNome($conexao);
             }else{
                 $_SESSION['firstWelcome'] = true;
                 $_SESSION['sendEmailToAdmin'] = true;
 
                 // Inserting values into 'USERS_INFO' table
-                $sql1 = "INSERT INTO users_info(user_id, username, fullname, access_token) VALUES ('{$_SESSION['user_id']}','$username','$fullname','$token')";
+                $sql1 = "INSERT INTO users_info(user_id, username, fullname, profile_pic, followers, follows, post, access_token) VALUES ('{$_SESSION['user_id']}','$username','$fullname','$profile_pic','$followers','$follow','$posts','$token')";
                 $insertInfo = mysqli_query($conexao,$sql1);
                 // Inserting values into 'USERS_HOTPOINTS' table
                 $sql2 = "INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('{$_SESSION['user_id']}','$username','$user_points')";
                 $insertPoints = mysqli_query($conexao,$sql2);
-                // Inserting values into 'USERS_SHARED' table
-                $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['shareId']}','{$_SESSION['sharedCount']}, '{$_SESSION['user_id']}')";
-                $insertShared = mysqli_query($conexao,$sql3);
-                newUserToAdminEmail();
+                // // Inserting values into 'USERS_SHARED' table
+                // $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['user_id']}','{$_SESSION['sharedCount']}', '{$_SESSION['shareId']}')";
+                // $insertShared = mysqli_query($conexao,$sql3);
+                if(!isset($_SESSION['estaUsandoShareLink'])){
+                    newUserToAdminEmail();
+                }
             }
             
             if(isset($_SESSION['estaUsandoShareLink'])){

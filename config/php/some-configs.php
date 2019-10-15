@@ -69,6 +69,21 @@
         }
     }
 
+    function ownShareLinkAccess(){
+        if(isset($_SESSION['ownShareLinkAccess'])){
+            echo "<script>
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Eii!! Você não pode utilizar seu próprio link de compartilhamento 😉',
+                    animation: false,
+                    customClass: {
+                    popup: 'animated tada'
+                    }
+                })
+            </script>";
+            unset($_SESSION['ownShareLinkAccess']);
+        }
+    }
 
 
 ?>

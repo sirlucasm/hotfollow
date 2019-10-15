@@ -56,6 +56,7 @@
             firstTimeLogin();
             alreadyLogged();
             congratulationsSharedLink();
+            ownShareLinkAccess();
         ?>
 
                 <!-- //////////  PAGE START  /////////// -->

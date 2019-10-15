@@ -3,35 +3,38 @@
     require_once __DIR__.'/../../php/sending-email.php';
     // require_once __DIR__.'/../../php/conexaoBancoDados.php';
 
-    function shareLinkConfigs($conexao){
+    function shareLinkConfigs(mysqli $conexao){
         
         //verificação para saber se o novo usuário existe
-        $resultUserShared = "SELECT user_id FROM users_shared WHERE user_id='{$_SESSION['user_id']}'"; 
-        $validacao_final3 = mysqli_query($conexao, $resultUserShared);
+        
+        $idUsuarioIndicado = $_SESSION['user_id'];
+        if($_SESSION['shareId'] != $idUsuarioIndicado){
+            $resultUserShared = "SELECT sharedToID FROM users_shared WHERE sharedToID='{$_SESSION['user_id']}'"; 
+            $validacao_final3 = mysqli_query($conexao, $resultUserShared);
+            if( mysqli_num_rows($validacao_final3)>0 ){
+                echo "<script> 
+                        Swal.fire({
+                            position: 'top',
+                            type: 'error',
+                            title: 'Você não pode mais usar links de compartilhamento!!',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                </script>";
+            }else{
+                // Inserting values into 'USERS_SHARED' table
+                $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['shareId']}','{$_SESSION['sharedCount']}', '{$_SESSION['user_id']}')";
+                $insertShared = mysqli_query($conexao,$sql3);
+                updateHotPoints($conexao,10);
+                updateHotPointsUsuarioIndicado($conexao,10);
+                updateSharedCount($conexao,1);
 
-        if( mysqli_num_rows($validacao_final3)>0 ){
-            $jaTemConta = 1;
-            echo "<script> alert('ja registrado no shared link'); </script>";
-        }else{
-            // Inserting values into 'USERS_SHARED' table
-            $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['shareId']}','{$_SESSION['sharedCount']}, '{$_SESSION['user_id']}')";
-            $insertShared = mysqli_query($conexao,$sql3);
-            
-            newUserToAdminEmailWithShareLink();
-            
-            
-            $idUsuarioIndicado = $_SESSION['user_id'];
-            if($_SESSION['shareId'] != $idUsuarioIndicado){
+                newUserToAdminEmailWithShareLink();
                 $_SESSION['congratulations'] = true;
-                //update points do indicador e do indicado
-                $atualizarPontos = "UPDATE users_hotpoints SET user_points='{$_SESSION['user_points']}'+10 WHERE user_id='{$_SESSION['shareId']}' OR user_id='{$_SESSION['user_id']}'";
-                $mudarPontos = mysqli_query($conexao, $atualizarPontos);
-
-                //increment share count do indicador
-                $atualizarSharedCount = "UPDATE users_shared SET sharedCount='{$_SESSION['sharedCount']}'+1 WHERE user_id='{$_SESSION['shareId']}'";
-                $mudarSharedCount = mysqli_query($conexao, $atualizarSharedCount);
+                
             }
-
+        }else{
+            $_SESSION['ownShareLinkAccess'] = true;
         }
     }
 

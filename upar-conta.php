@@ -76,7 +76,7 @@
                     </div>
                     <div class="text-center">
                         <h4><?php echo $_SESSION['fullname']; ?></h4>
-                        <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo $_SESSION['username']; ?> </a></p>
+                        <p><a href="https://instagram.com/<?php echo $userName; ?>" target="_blank"> <?php echo "@".$_SESSION['username']; ?> </a></p>
                         <a href="config/php/logout-session.php" class="exit-edit"><i class="fas fa-sign-out-alt"></i> sair</a>
                     </div>
                 </div>

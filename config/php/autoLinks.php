@@ -6,8 +6,8 @@
     $linkTermsUse = $linkHotFollow."TermsUse.php";
 
     $linkInicio = $linkHotFollow."inicio.php";
-    $linkUPAcc = $linkHotFollow."up-account-flw_lk.php";
-    $linkGetHPS = $linkHotFollow."get-hotpoints.php";
+    $linkUPAcc = $linkHotFollow."upar-conta.php";
+    $linkGetHPS = $linkHotFollow."ganhar-hotpoints.php";
     $linkHelp = $linkHotFollow."help.php";
 
 
