@@ -9,11 +9,12 @@
 
         // @@@@@##### OBTER INFORMAÇÕES DO BANCO DE DADOS
         $queryPoints = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
-        $querySharedCount = "SELECT * FROM users_shared WHERE user_id='{$_SESSION['user_id']}'";
         $dados1 = mysqli_query($conexao, $queryPoints);
-        $dados2 = mysqli_query($conexao, $querySharedCount);
         $users_hotpoints = $dados1->fetch_array();
-        $users_shared = $dados2->fetch_array();
+
+        $counts = "SELECT COUNT('sharedCount') AS count FROM users_shared WHERE user_id='{$_SESSION['user_id']}'";
+        $shareCount = mysqli_query($conexao, $counts);
+        $showCounts = $shareCount->fetch_array();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -162,19 +163,22 @@
                     <div class="row justify-content-center">
                         <div class="mt-3">
                             <h5><?php 
-                                if(isset($users_shared['sharedCount'])){ 
-                                    if($users_shared['sharedCount']<=3){ 
-                                        echo $users_shared['sharedCount'].' pessoas utilizaram seu link 😔';
+                                if(isset($showCounts[count])){ 
+                                    if($showCounts[count]>0 && $showCounts[count]<=3){ 
+                                        echo $showCounts[count].' pessoas utilizaram seu link 😔';
                                     } 
-                                    elseif($users_shared['sharedCount']>3 && $users_shared['sharedCount']<=6){ 
+                                    elseif($showCounts[count]>3 && $showCounts[count]<=6){ 
                                         echo '👏'; 
                                     } 
-                                    elseif($users_shared['sharedCount']>6 && $users_shared['sharedCount']<=12){ 
-                                        echo $users_shared['sharedCount'].' pessoas utilizaram seu link 😱'; 
+                                    elseif($showCounts[count]>6 && $showCounts[count]<=12){ 
+                                        echo $showCounts[count].' pessoas utilizaram seu link 😱'; 
                                     } 
-                                    elseif($users_shared['sharedCount']>12){ 
-                                        echo $users_shared['sharedCount'].' pessoas utilizaram seu link 🙀'; 
-                                    }    
+                                    elseif($showCounts[count]>12){ 
+                                        echo $showCounts[count].' pessoas utilizaram seu link 🙀'; 
+                                    } 
+                                    else{
+                                        echo 'Você ainda não compartilhou com niguém 😔'; 
+                                    }   
                                 } 
                                 else{ 
                                     echo 'Você ainda não compartilhou com niguém 😔'; 

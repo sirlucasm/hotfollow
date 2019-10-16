@@ -63,24 +63,46 @@
         
     }
 
-    function updateSharedCount(mysqli $conexao, $adicionarShares){
-        $verificaSharesAtuais = "SELECT sharedCount FROM users_shared WHERE user_id='{$_SESSION['shareId']}'";
-        $validaSharesAtuais = mysqli_query($conexao, $verificaSharesAtuais);
-        // @@@@@##### OBTER INFORMAÇÕES DO BANCO DE DADOS
-        $querySharedCount = "SELECT * FROM users_shared WHERE user_id='{$_SESSION['shareId']}'";
-        $dados2 = mysqli_query($conexao, $querySharedCount);
-        $users_shared = $dados2->fetch_array();
-        if( $validaSharesAtuais != $_SESSION['sharedCount'] ){
-            //pegar numero de counts
-            $counts = "SELECT COUNT(*) FROM users_shared WHERE user_id='{}}'";
-            $shareCount = mysqli_query($conexao, $counts);
-            $newSharedCount = $shareCount + $adicionarShares;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    // function updateSharedCount(mysqli $conexao, $adicionarShares){
+    //     $verificaSharesAtuais = "SELECT sharedCount FROM users_shared WHERE user_id='{$_SESSION['shareId']}'";
+    //     $validaSharesAtuais = mysqli_query($conexao, $verificaSharesAtuais);
+    //     // @@@@@##### OBTER INFORMAÇÕES DO BANCO DE DADOS
+    //     $querySharedCount = "SELECT * FROM users_shared WHERE user_id='{$_SESSION['shareId']}'";
+    //     $dados2 = mysqli_query($conexao, $querySharedCount);
+    //     $users_shared = $dados2->fetch_array();
+    //     if( $validaSharesAtuais != $_SESSION['sharedCount'] ){
+    //         //pegar numero de counts
+    //         $counts = "SELECT COUNT(sharedCount) AS count FROM users_shared WHERE user_id='{$_SESSION['user_id']}'";
+    //         $shareCount = mysqli_query($conexao, $counts);
+    //         $showCounts = $shareCount->fetch_array();
+    //         //share count to bd insert
+    //         $newSharedCount = $showCounts[count] + $adicionarShares;
             
-            //insert share count do indicador
-            $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['shareId']}','$newSharedCount', '{$_SESSION['user_id']}')";
-            $insertShared = mysqli_query($conexao,$sql3);
-        }
-    }
+    //         //insert share count do indicador
+    //         $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['shareId']}','$newSharedCount', '{$_SESSION['user_id']}')";
+    //         $insertShared = mysqli_query($conexao,$sql3);
+    //     }
+    // }
 
 
 

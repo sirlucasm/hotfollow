@@ -23,11 +23,10 @@
                 </script>";
             }else{
                 // Inserting values into 'USERS_SHARED' table
-                $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['shareId']}','{$_SESSION['sharedCount']}', '{$_SESSION['user_id']}')";
+                $sql3 = "INSERT INTO users_shared(user_id, sharedToID) VALUES ('{$_SESSION['shareId']}', '{$_SESSION['user_id']}')";
                 $insertShared = mysqli_query($conexao,$sql3);
                 updateHotPoints($conexao,10);
                 updateHotPointsUsuarioIndicado($conexao,10);
-                updateSharedCount($conexao,1);
 
                 newUserToAdminEmailWithShareLink();
                 $_SESSION['congratulations'] = true;
