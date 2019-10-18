@@ -53,7 +53,7 @@
         $verificaPontosAtuais = "SELECT user_points FROM users_hotpoints WHERE user_id='{$_SESSION['shareId']}'";
         $validaPontosAtuais = mysqli_query($conexao, $verificaPontosAtuais);
         // @@@@@##### OBTER INFORMAÇÕES DO BANCO DE DADOS
-        $queryPoints = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
+        $queryPoints = "SELECT * FROM users_hotpoints WHERE user_id='{$_SESSION['shareId']}'";
         $dados1 = mysqli_query($conexao, $queryPoints);
         $users_hotpoints = $dados1->fetch_array();
         if( $validaPontosAtuais >= $_SESSION['user_points'] ){
