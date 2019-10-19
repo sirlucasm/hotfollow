@@ -9,8 +9,7 @@
         
         $idUsuarioIndicado = $_SESSION['user_id'];
         if($_SESSION['shareId'] != $idUsuarioIndicado){
-            $resultUserShared = "SELECT sharedToID FROM users_shared WHERE sharedToID='{$_SESSION['user_id']}'"; 
-            $validacao_final3 = mysqli_query($conexao, $resultUserShared);
+            $validacao_final3 = mysqli_query($conexao, "SELECT sharedToID FROM users_shared WHERE sharedToID='{$_SESSION['user_id']}'");
             if( mysqli_num_rows($validacao_final3)>0 ){
                 echo "<script> 
                         Swal.fire({
@@ -23,8 +22,7 @@
                 </script>";
             }else{
                 // Inserting values into 'USERS_SHARED' table
-                $sql3 = "INSERT INTO users_shared(user_id, sharedToID) VALUES ('{$_SESSION['shareId']}', '{$_SESSION['user_id']}')";
-                $insertShared = mysqli_query($conexao,$sql3);
+                $insertShared = mysqli_query($conexao,"INSERT INTO users_shared(user_id, sharedToID) VALUES ('{$_SESSION['shareId']}', '{$_SESSION['user_id']}')");
                 updateHotPoints($conexao,10);
                 updateHotPointsUsuarioIndicado($conexao,10);
 

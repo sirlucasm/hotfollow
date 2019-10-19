@@ -74,13 +74,9 @@
             $_SESSION['user_points'] = $user_points;
             
 
-            // Verify user details in USERS table
-            $resultUserInfo = "SELECT user_id FROM users_info WHERE user_id='{$_SESSION['user_id']}'";       
-            $resultUserPoints = "SELECT user_id FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'";
-            
-            $validacao_final1 = mysqli_query($conexao, $resultUserInfo);
-            $validacao_final2 = mysqli_query($conexao, $resultUserPoints);
-
+            // Verify user details in USERS table            
+            $validacao_final1 = mysqli_query($conexao, "SELECT user_id FROM users_info WHERE user_id='{$_SESSION['user_id']}'");
+            $validacao_final2 = mysqli_query($conexao, "SELECT user_id FROM users_hotpoints WHERE user_id='{$_SESSION['user_id']}'");
 
             if( mysqli_num_rows($validacao_final1)>0 && mysqli_num_rows($validacao_final2)>0){
                 $_SESSION['alreadySigned'] = true;
@@ -94,11 +90,9 @@
                 $_SESSION['sendEmailToAdmin'] = true;
 
                 // Inserting values into 'USERS_INFO' table
-                $sql1 = "INSERT INTO users_info(user_id, username, fullname, profile_pic, followers, follows, post, access_token) VALUES ('{$_SESSION['user_id']}','$username','$fullname','$profile_pic','$followers','$follow','$posts','$token')";
-                $insertInfo = mysqli_query($conexao,$sql1);
+                $insertInfo = mysqli_query($conexao,"INSERT INTO users_info(user_id, username, fullname, profile_pic, followers, follows, post, access_token) VALUES ('{$_SESSION['user_id']}','$username','$fullname','$profile_pic','$followers','$follow','$posts','$token')");
                 // Inserting values into 'USERS_HOTPOINTS' table
-                $sql2 = "INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('{$_SESSION['user_id']}','$username','$user_points')";
-                $insertPoints = mysqli_query($conexao,$sql2);
+                $insertPoints = mysqli_query($conexao,"INSERT INTO users_hotpoints(user_id, username, user_points) VALUES ('{$_SESSION['user_id']}','$username','$user_points')");
                 // // Inserting values into 'USERS_SHARED' table
                 // $sql3 = "INSERT INTO users_shared(user_id, sharedCount, sharedToID) VALUES ('{$_SESSION['user_id']}','{$_SESSION['sharedCount']}', '{$_SESSION['shareId']}')";
                 // $insertShared = mysqli_query($conexao,$sql3);
